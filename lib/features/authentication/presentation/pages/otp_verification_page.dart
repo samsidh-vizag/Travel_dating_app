@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/authenication_constants/otp_verification_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
@@ -15,7 +13,7 @@ import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
 import 'package:travel_dating_app/features/account_creation/presentation/pages/create_account_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/widgets/otp_textfield_widget.dart';
-import 'package:travel_dating_app/features/authentication/presentation/widgets/progressbar_container.dart';
+import 'package:travel_dating_app/core/widgets/progressbar_container.dart';
 
 class OtpVerificationPage extends HookConsumerWidget {
   static const routePath = '/otpVerifiaction';
@@ -24,11 +22,9 @@ class OtpVerificationPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final constants = ref.watch(otpVerificationPageConstantsProvider);
-    final assets = ref.watch(appAssetConstantsProvider);
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
     final typography = AppTheme.of(context).typography;
-    final boxShadow = AppTheme.of(context).boxShadow;
 
     final firstOtp = useTextEditingController();
     final secondOtp = useTextEditingController();
@@ -105,7 +101,7 @@ class OtpVerificationPage extends HookConsumerWidget {
                   constants.txtResendCode,
                   style: typography.h600.copyWith(color: colors.primary),
                 ),
-                SizedBox16Widget(),
+                const SizedBox16Widget(),
                 ElevatedButtonWidget(
                   text: constants.txtVerify,
                   onPressed: () {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/account_creation_contants/create_account_page_constants.dart';
@@ -9,14 +8,14 @@ import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
-import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
-import 'package:travel_dating_app/core/widgets/8px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
 import 'package:travel_dating_app/core/widgets/textfiels_and_title_widget.dart';
-import 'package:travel_dating_app/features/authentication/presentation/widgets/progressbar_container.dart';
+import 'package:travel_dating_app/core/widgets/progressbar_container.dart';
+import 'package:travel_dating_app/features/account_creation/presentation/pages/select_category_page.dart';
+import 'package:travel_dating_app/features/account_creation/presentation/widget/tub_button_widget.dart';
 
 class CreateAccountPage extends HookConsumerWidget {
   static const routePath = '/createAccount';
@@ -31,8 +30,29 @@ class CreateAccountPage extends HookConsumerWidget {
     final spaces = AppTheme.of(context).spaces;
     final typography = AppTheme.of(context).typography;
 
+    ///controller
     final nameController = useTextEditingController();
     final emailController = useTextEditingController();
+
+    ///tab to show
+    final tabsToShow = useMemoized(() => [
+          {
+            'text': constants.txtMale,
+            'type': assets.icMale,
+          },
+          {
+            'text': constants.txtFemale,
+            'type': assets.icFemale,
+          },
+        ]);
+
+    /// Selected tab
+    final selectedTabType = useState<String?>(null);
+
+    /// Handle tapping on the tab items
+    void tabOnPressed(int index) {
+      selectedTabType.value = tabsToShow[index]['type'] as String?;
+    }
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -74,36 +94,14 @@ class CreateAccountPage extends HookConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
-                      width: 80,
-                      height: 70,
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            assets.icMale,
-                          ),
-                          Text(
-                            constants.txtMale,
-                            style: typography.h600,
-                          ),
-                        ],
+                    for (var i = 0; i < tabsToShow.length; i++)
+                      TabButtonWidget(
+                        buttonText: tabsToShow[i]['text'] as String,
+                        isSelected:
+                            selectedTabType.value == tabsToShow[i]['type'],
+                        onPressed: () => tabOnPressed(i),
+                        imageText: tabsToShow[i]['type'] as String,
                       ),
-                    ),
-                    SizedBox(
-                      width: 80,
-                      height: 70,
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            assets.icFemale,
-                          ),
-                          Text(
-                            constants.txtFemale,
-                            style: typography.h600,
-                          ),
-                        ],
-                      ),
-                    )
                   ],
                 ),
                 Padding(
@@ -137,7 +135,9 @@ class CreateAccountPage extends HookConsumerWidget {
                 ),
                 ElevatedButtonWidget(
                   text: appConstants.txtContinue,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push(CategoryPage.routePath);
+                  },
                 ),
               ],
             ),

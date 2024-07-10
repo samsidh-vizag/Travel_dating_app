@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
-import 'package:travel_dating_app/core/constants/authenication_constants/sign_up_page_constants.dart';
 import 'package:travel_dating_app/core/constants/authenication_constants/signin_with_number_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
@@ -53,11 +53,37 @@ class SignInWithNumberPage extends HookConsumerWidget {
                 ),
                 HeaddingTextWidget(text: constants.txtHeading),
                 const SizedBox32Widget(),
-                TextfieldWidget(
-                  hintText: constants.txtEnterPhone,
-                  prefixIcon: const Icon(Icons.email),
-                  controller: phoneNumberController,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: IntlPhoneField(
+                    flagsButtonPadding: EdgeInsets.all(spaces.space_125),
+                    dropdownIconPosition: IconPosition.trailing,
+                    showCountryFlag: true,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: 'Phone number',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(spaces.space_100),
+                          borderSide:
+                              BorderSide(color: colors.textSubtlest, width: 1)),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(spaces.space_100),
+                        borderSide: BorderSide(color: colors.primary, width: 1),
+                      ),
+                    ),
+                    initialCountryCode: 'IN',
+                    onChanged: (phone) {
+                      phoneNumberController.text = phone.completeNumber;
+                    },
+                  ),
                 ),
+
+                // TextfieldWidget(
+                //   hintText: constants.txtEnterPhone,
+                //   prefixIcon: const Icon(Icons.email),
+                //   controller: phoneNumberController,
+                // ),
                 const SizedBox24Widget(),
                 ElevatedButtonWidget(
                   text: appConstants.txtContinue,

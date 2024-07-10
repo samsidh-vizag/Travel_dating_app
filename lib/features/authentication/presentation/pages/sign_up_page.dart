@@ -6,7 +6,6 @@ import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/constants/authenication_constants/sign_up_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
-import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/8px_sizedbox.dart';

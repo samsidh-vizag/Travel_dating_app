@@ -8,6 +8,9 @@ class AppConstants {
   final String txtChat = 'Chat';
   final String txtMatches = 'Matches';
   final String txtProfile = 'Profile';
+  final String txtCamera = 'Camara';
+  final String txtGallery = 'Gallery';
+  final String txtDelete = 'Delete';
 }
 
 @riverpod

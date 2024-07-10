@@ -17,10 +17,10 @@ class TextfieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = AppTheme.of(context).colors;
     final typography = AppTheme.of(context).typography;
-    final spacer = AppTheme.of(context).spaces;
+    final spaces = AppTheme.of(context).spaces;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: spacer.space_300),
+      padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
@@ -28,10 +28,10 @@ class TextfieldWidget extends StatelessWidget {
           hintStyle: typography.h500.copyWith(color: colors.textInverse),
           prefixIcon: prefixIcon,
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(spacer.space_100),
+              borderRadius: BorderRadius.circular(spaces.space_100),
               borderSide: BorderSide(color: colors.textSubtlest, width: 1)),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(spacer.space_100),
+            borderRadius: BorderRadius.circular(spaces.space_100),
             borderSide: BorderSide(color: colors.primary, width: 1),
           ),
         ),

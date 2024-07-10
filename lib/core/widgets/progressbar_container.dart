@@ -41,7 +41,7 @@ class ProgressbarContainer extends StatelessWidget {
         ),
         CircleAvatar(
           radius: spaces.space_100,
-          backgroundColor: stepFour,
+          backgroundColor: stepFive,
         ),
       ],
     );
