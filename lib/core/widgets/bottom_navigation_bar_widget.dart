@@ -4,7 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/under_contaction.dart';
-import 'package:travel_dating_app/features/home_page/presentation/pages/home_page.dart';
+import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dart';
+import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
 
 class BottomNaviWidget extends HookConsumerWidget {
   static const routePath = '/bottomNav';
@@ -43,7 +44,7 @@ class BottomNaviWidget extends HookConsumerWidget {
             ref.read(navbarSelectedPageProvider.notifier).state = value,
         children: const [
           HomePage(),
-          UnderConstractionWidget(),
+          ChatPage(),
           UnderConstractionWidget(),
           UnderConstractionWidget(),
         ],

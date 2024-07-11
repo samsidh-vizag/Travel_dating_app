@@ -36,6 +36,10 @@ final class AppAssetConstants {
   final String icHeart = '${_imagePath}heart.png';
   final String icAdds = '${_imagePath}add.png';
   final String icNotification = '${_imagePath}notification.png';
+  final String icFilter = '${_imagePath}filter.png';
+  final String icHeartWhite = '${_imagePath}heart_white.png';
+  final String icSter = '${_imagePath}star.png';
+  final String icCross = '${_imagePath}cross.png';
 }
 
 @riverpod

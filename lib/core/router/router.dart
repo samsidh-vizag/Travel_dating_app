@@ -9,7 +9,8 @@ import 'package:travel_dating_app/features/account_creation/presentation/pages/u
 import 'package:travel_dating_app/features/authentication/presentation/pages/otp_verification_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/sign_up_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/signin_with_number_page.dart';
-import 'package:travel_dating_app/features/home_page/presentation/pages/home_page.dart';
+import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dart';
+import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
 
 part 'router.g.dart';
 
@@ -54,6 +55,10 @@ final router =
   GoRoute(
     path: HomePage.routePath,
     builder: (context, state) => const HomePage(),
+  ),
+  GoRoute(
+    path: ChatPage.routePath,
+    builder: (context, state) => const ChatPage(),
   ),
 ]);
 
