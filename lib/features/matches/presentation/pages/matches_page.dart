@@ -1,16 +1,15 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
-import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
+import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
+import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/page_title_widget.dart';
-import 'package:travel_dating_app/features/chat/presentation/widgets/chats_listview_widgets.dart';
+import 'package:travel_dating_app/features/matches/presentation/widgets/user_profile_lgridview_widget.dart';
 
-class ChatPage extends HookConsumerWidget {
-  static const routePath = '/chatpage';
-  const ChatPage({super.key});
+class MatchesPage extends HookConsumerWidget {
+  static const routePath = '/matchesPage';
+  const MatchesPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,13 +41,16 @@ class ChatPage extends HookConsumerWidget {
                     height: spaces.space_500,
                   ),
                   PageTitleWidget(
-                    title: appConstants.txtChat,
+                    title: appConstants.txtMatches,
                   ),
-                  const SizedBox24Widget(),
+                  SizedBox16Widget(),
                   SizedBox(
                     height: MediaQuery.sizeOf(context).height,
-                    child: const ChatsListviewWidgets(),
+                    child: UserProfileGridviewWidget(),
                   ),
+                  SizedBox(
+                    height: 500,
+                  )
                 ],
               ),
             ),

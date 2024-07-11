@@ -11,6 +11,7 @@ import 'package:travel_dating_app/features/authentication/presentation/pages/sig
 import 'package:travel_dating_app/features/authentication/presentation/pages/signin_with_number_page.dart';
 import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dart';
 import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
+import 'package:travel_dating_app/features/matches/presentation/pages/matches_page.dart';
 
 part 'router.g.dart';
 
@@ -59,6 +60,10 @@ final router =
   GoRoute(
     path: ChatPage.routePath,
     builder: (context, state) => const ChatPage(),
+  ),
+  GoRoute(
+    path: MatchesPage.routePath,
+    builder: (context, state) => const MatchesPage(),
   ),
 ]);
 

@@ -6,6 +6,7 @@ import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/under_contaction.dart';
 import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dart';
 import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
+import 'package:travel_dating_app/features/matches/presentation/pages/matches_page.dart';
 
 class BottomNaviWidget extends HookConsumerWidget {
   static const routePath = '/bottomNav';
@@ -45,7 +46,7 @@ class BottomNaviWidget extends HookConsumerWidget {
         children: const [
           HomePage(),
           ChatPage(),
-          UnderConstractionWidget(),
+          MatchesPage(),
           UnderConstractionWidget(),
         ],
       ),
