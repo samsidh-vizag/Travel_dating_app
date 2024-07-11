@@ -1,24 +1,22 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:travel_dating_app/core/utils/image_picker_utils.dart';
 
-final imageProvider = StateProvider<XFile?>((ref) {
-  return null;
-});
-
 class ImagePickerWidget extends ConsumerWidget {
   final Widget? widgets;
+  final String identifier;
   const ImagePickerWidget({
     super.key,
     required this.widgets,
+    required this.identifier,
   });
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     /// Path of the image picked
-    final imagePathPicked = ref.watch(imageProvider)?.path;
+    final imagePathPicked = ref.watch(imageProvider(identifier))?.path;
 
     /// Image to show if the image is already picked
     Widget? imageToShow;
@@ -31,24 +29,35 @@ class ImagePickerWidget extends ConsumerWidget {
     } else if (imagePathPicked != null) {
       imageToShow = Container(
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(100),
-            image: DecorationImage(
-                image: FileImage(
-                  File(imagePathPicked),
-                ),
-                fit: BoxFit.cover)
-            // shape: BoxShape.circle,
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(100),
+          image: DecorationImage(
+            image: FileImage(
+              File(imagePathPicked),
             ),
+            fit: BoxFit.cover,
+          ),
+        ),
       );
     }
 
     return InkWell(
-        onTap: () async {
-          final imageSelected =
-              await ImagePickerUtils.showDialogueForImagePicker(context);
-          ref.read(imageProvider.notifier).state = imageSelected;
-        },
-        child: imageToShow ?? widgets);
+      onTap: () async {
+        final imageSelected =
+            await ImagePickerUtils.showDialogueForImagePicker(context);
+        ref.read(imageProvider(identifier).notifier).state = imageSelected;
+      },
+      child: imageToShow ?? widgets,
+    );
   }
+}
+
+final imageProvider =
+    StateNotifierProvider.family<ImageProviderNotifier, XFile?, String>(
+        (ref, identifier) {
+  return ImageProviderNotifier();
+});
+
+class ImageProviderNotifier extends StateNotifier<XFile?> {
+  ImageProviderNotifier() : super(null);
 }

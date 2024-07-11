@@ -21,11 +21,15 @@ class OtpVerificationPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ///constatns
     final constants = ref.watch(otpVerificationPageConstantsProvider);
+
+    ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
     final typography = AppTheme.of(context).typography;
 
+    ///controller
     final firstOtp = useTextEditingController();
     final secondOtp = useTextEditingController();
     final thirdOtp = useTextEditingController();

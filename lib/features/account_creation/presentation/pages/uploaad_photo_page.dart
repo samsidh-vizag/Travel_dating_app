@@ -1,11 +1,9 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/account_creation_contants/upload_photo_page_constants.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
-import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
@@ -16,6 +14,7 @@ import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/image_picker_widget.dart';
 import 'package:travel_dating_app/core/widgets/progressbar_container.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
+import 'package:travel_dating_app/features/account_creation/presentation/pages/location_permission_page.dart';
 import 'package:travel_dating_app/features/account_creation/presentation/widget/photo_upload_circle_widget.dart';
 
 class UploaadePhotoPage extends HookConsumerWidget {
@@ -43,126 +42,136 @@ class UploaadePhotoPage extends HookConsumerWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Column(
-          children: [
-            const Row(
-              children: [
-                BackArrowButton(),
-              ],
-            ),
-            HeaddingTextWidget(text: constants.txtHeading),
-            SubHeaddingTextWidget(text: constants.txtSubHeading),
-            const SizedBox16Widget(),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: spaces.space_400 * 3,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Row(
+                children: [
+                  BackArrowButton(),
+                ],
               ),
-              child: ProgressbarContainer(
-                stepOne: colors.primary,
-                stepTwo: colors.primary,
-                stepThree: colors.primary,
-                stepFour: colors.primary,
-                stepFive: colors.primary,
-              ),
-            ),
-            const SizedBox32Widget(),
-            Stack(
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 340,
-                  child: Image.asset(assets.imgBackgroundPhoto),
+              HeaddingTextWidget(text: constants.txtHeading),
+              SubHeaddingTextWidget(text: constants.txtSubHeading),
+              const SizedBox16Widget(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: spaces.space_400 * 3,
                 ),
-                Positioned(
-                  top: 77,
-                  left: 114,
-                  child: Container(
-                    height: spaces.space_100 * 23,
-                    width: spaces.space_100 * 23,
-                    decoration: BoxDecoration(
-                      color: colors.secondary,
-                      shape: BoxShape.circle,
-                    ),
-                    child: ImagePickerWidget(
-                      widgets: SizedBox(
-                        height: 40,
-                        width: 40,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              assets.icAddImage,
-                              // ignore: deprecated_member_use
-                              color: colors.primary,
-                            ),
-                            Text(constants.txtAddImage),
-                          ],
+                child: ProgressbarContainer(
+                  stepOne: colors.primary,
+                  stepTwo: colors.primary,
+                  stepThree: colors.primary,
+                  stepFour: colors.primary,
+                  stepFive: colors.primary,
+                ),
+              ),
+              const SizedBox32Widget(),
+              Stack(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 340,
+                    child: Image.asset(assets.imgBackgroundPhoto),
+                  ),
+                  Positioned(
+                    top: 77,
+                    left: 114,
+                    child: Container(
+                      height: spaces.space_100 * 23,
+                      width: spaces.space_100 * 23,
+                      decoration: BoxDecoration(
+                        color: colors.secondary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: ImagePickerWidget(
+                        identifier: 'main',
+                        widgets: SizedBox(
+                          height: 40,
+                          width: 40,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                assets.icAddImage,
+                                // ignore: deprecated_member_use
+                                color: colors.primary,
+                              ),
+                              Text(constants.txtAddImage),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  top: 170,
-                  left: 16,
-                  child: PhotoUploadCircleWidget(
-                    height: spaces.space_100 * 12,
-                    width: spaces.space_100 * 12,
-                    radius: spaces.space_50 * 4,
-                    iconSize: spaces.space_200,
+                  Positioned(
+                    top: 170,
+                    left: 16,
+                    child: PhotoUploadCircleWidget(
+                      identifier: 'circle1',
+                      height: spaces.space_100 * 12,
+                      width: spaces.space_100 * 12,
+                      radius: spaces.space_50 * 4,
+                      iconSize: spaces.space_200,
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: 20,
-                  right: 32,
-                  child: PhotoUploadCircleWidget(
-                    height: spaces.space_100 * 10,
-                    width: spaces.space_100 * 10,
-                    radius: spaces.space_50 * 3,
-                    iconSize: spaces.space_50 * 3,
+                  Positioned(
+                    top: 20,
+                    right: 32,
+                    child: PhotoUploadCircleWidget(
+                      identifier: 'circle2',
+                      height: spaces.space_100 * 10,
+                      width: spaces.space_100 * 10,
+                      radius: spaces.space_50 * 3,
+                      iconSize: spaces.space_50 * 3,
+                    ),
                   ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 180,
-                  child: PhotoUploadCircleWidget(
-                    height: spaces.space_100 * 9,
-                    width: spaces.space_100 * 9,
-                    radius: spaces.space_50 * 2.5,
-                    iconSize: spaces.space_150,
+                  Positioned(
+                    bottom: 0,
+                    left: 180,
+                    child: PhotoUploadCircleWidget(
+                      identifier: 'circle3',
+                      height: spaces.space_100 * 9,
+                      width: spaces.space_100 * 9,
+                      radius: spaces.space_50 * 2.5,
+                      iconSize: spaces.space_150,
+                    ),
                   ),
-                ),
-                Positioned(
-                  top: 16,
-                  left: 120,
-                  child: PhotoUploadCircleWidget(
-                    height: spaces.space_100 * 8,
-                    width: spaces.space_100 * 8,
-                    radius: spaces.space_125,
-                    iconSize: spaces.space_125,
+                  Positioned(
+                    top: 16,
+                    left: 120,
+                    child: PhotoUploadCircleWidget(
+                      identifier: 'circle4',
+                      height: spaces.space_100 * 8,
+                      width: spaces.space_100 * 8,
+                      radius: spaces.space_125,
+                      iconSize: spaces.space_125,
+                    ),
                   ),
-                ),
-                Positioned(
-                  bottom: 88,
-                  right: 60,
-                  child: PhotoUploadCircleWidget(
-                    height: spaces.space_100 * 6,
-                    width: spaces.space_100 * 6,
-                    radius: spaces.space_100,
-                    iconSize: spaces.space_100,
+                  Positioned(
+                    bottom: 88,
+                    right: 60,
+                    child: PhotoUploadCircleWidget(
+                      identifier: 'circle5',
+                      height: spaces.space_100 * 6,
+                      width: spaces.space_100 * 6,
+                      radius: spaces.space_100,
+                      iconSize: spaces.space_100,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox24Widget(),
-            SizedBox(
-              height: spaces.space_500,
-            ),
-            ElevatedButtonWidget(
-              text: constants.txtComplete,
-              onPressed: () {},
-            ),
-          ],
+                ],
+              ),
+              const SizedBox24Widget(),
+              SizedBox(
+                height: spaces.space_500,
+              ),
+              ElevatedButtonWidget(
+                text: constants.txtComplete,
+                onPressed: () {
+                  context.push(LocationPermissionPage.routePath);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

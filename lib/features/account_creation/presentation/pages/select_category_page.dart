@@ -28,7 +28,6 @@ class CategoryPage extends HookConsumerWidget {
     ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
-    final typography = AppTheme.of(context).typography;
 
     ///tab to show
     final tabsToShow = useMemoized(() => [
@@ -69,45 +68,47 @@ class CategoryPage extends HookConsumerWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Column(
-          children: [
-            const Row(
-              children: [
-                BackArrowButton(),
-              ],
-            ),
-            HeaddingTextWidget(text: constants.txtHeading),
-            SubHeaddingTextWidget(text: constants.txtSubHeading),
-            const SizedBox16Widget(),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: spaces.space_400 * 3,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Row(
+                children: [
+                  BackArrowButton(),
+                ],
               ),
-              child: ProgressbarContainer(
-                stepOne: colors.primary,
-                stepTwo: colors.primary,
-                stepThree: colors.primary,
-                stepFour: colors.textSubtlest,
-                stepFive: colors.textSubtlest,
+              HeaddingTextWidget(text: constants.txtHeading),
+              SubHeaddingTextWidget(text: constants.txtSubHeading),
+              const SizedBox16Widget(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: spaces.space_400 * 3,
+                ),
+                child: ProgressbarContainer(
+                  stepOne: colors.primary,
+                  stepTwo: colors.primary,
+                  stepThree: colors.primary,
+                  stepFour: colors.textSubtlest,
+                  stepFive: colors.textSubtlest,
+                ),
               ),
-            ),
-            const SizedBox24Widget(),
-            for (var i = 0; i < tabsToShow.length; i++)
-              TabWidget(
-                text: tabsToShow[i]['text'] as String,
-                isSelected: selectedTabType.value == tabsToShow[i]['type'],
-                onPressed: () => tabOnPressed(i),
+              const SizedBox24Widget(),
+              for (var i = 0; i < tabsToShow.length; i++)
+                TabWidget(
+                  text: tabsToShow[i]['text'] as String,
+                  isSelected: selectedTabType.value == tabsToShow[i]['type'],
+                  onPressed: () => tabOnPressed(i),
+                ),
+              SizedBox(
+                height: spaces.space_500,
               ),
-            SizedBox(
-              height: spaces.space_500,
-            ),
-            ElevatedButtonWidget(
-              text: appConstants.txtContinue,
-              onPressed: () {
-                context.push(SelectInterestPage.routePath);
-              },
-            ),
-          ],
+              ElevatedButtonWidget(
+                text: appConstants.txtContinue,
+                onPressed: () {
+                  context.push(SelectInterestPage.routePath);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

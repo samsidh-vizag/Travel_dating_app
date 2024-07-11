@@ -30,6 +30,12 @@ final class AppAssetConstants {
   final String icTravel = '${_imagePath}travel.png';
   final String icFashion = '${_imagePath}fashion.png';
   final String imgBackgroundPhoto = '${_imagePath}backgoundphoto.png';
+  final String imgLocation = '${_imagePath}location.png';
+  final String icHome = '${_imagePath}home.png';
+  final String icChat = '${_imagePath}chat.png';
+  final String icHeart = '${_imagePath}heart.png';
+  final String icAdds = '${_imagePath}add.png';
+  final String icNotification = '${_imagePath}notification.png';
 }
 
 @riverpod

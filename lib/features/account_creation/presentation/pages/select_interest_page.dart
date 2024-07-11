@@ -107,61 +107,64 @@ class SelectInterestPage extends HookConsumerWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-        child: Column(
-          children: [
-            const Row(
-              children: [
-                BackArrowButton(),
-              ],
-            ),
-            HeaddingTextWidget(text: constants.txtHeading),
-            SubHeaddingTextWidget(text: constants.txtSubHeading),
-            const SizedBox16Widget(),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: spaces.space_400 * 3,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Row(
+                children: [
+                  BackArrowButton(),
+                ],
               ),
-              child: ProgressbarContainer(
-                stepOne: colors.primary,
-                stepTwo: colors.primary,
-                stepThree: colors.primary,
-                stepFour: colors.primary,
-                stepFive: colors.textSubtlest,
-              ),
-            ),
-            const SizedBox24Widget(),
-            SizedBox(
-              height: spaces.space_500 * tabsToShow.length,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisExtent: 50,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                  ),
-                  itemCount: tabsToShow.length,
-                  itemBuilder: (context, index) {
-                    final tab = tabsToShow[index];
-                    return ButtonInterestedItemWidget(
-                      isSelected: selectedTabs.value.contains(tab['text']),
-                      buttonText: tab['text'] as String,
-                      onPressed: () => tabOnPressed(index),
-                      icon: tab['icon'] as String,
-                    );
-                  },
+              HeaddingTextWidget(text: constants.txtHeading),
+              SubHeaddingTextWidget(text: constants.txtSubHeading),
+              const SizedBox16Widget(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: spaces.space_400 * 3,
+                ),
+                child: ProgressbarContainer(
+                  stepOne: colors.primary,
+                  stepTwo: colors.primary,
+                  stepThree: colors.primary,
+                  stepFour: colors.primary,
+                  stepFive: colors.textSubtlest,
                 ),
               ),
-            ),
-            ElevatedButtonWidget(
-              text: appConstants.txtContinue,
-              onPressed: () {
-                context.push(UploaadePhotoPage.routePath);
-              },
-            ),
-          ],
+              const SizedBox24Widget(),
+              SizedBox(
+                height: spaces.space_500 * tabsToShow.length,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisExtent: 50,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                    ),
+                    itemCount: tabsToShow.length,
+                    itemBuilder: (context, index) {
+                      final tab = tabsToShow[index];
+                      return ButtonInterestedItemWidget(
+                        isSelected: selectedTabs.value.contains(tab['text']),
+                        buttonText: tab['text'] as String,
+                        onPressed: () => tabOnPressed(index),
+                        icon: tab['icon'] as String,
+                      );
+                    },
+                  ),
+                ),
+              ),
+              ElevatedButtonWidget(
+                text: appConstants.txtContinue,
+                onPressed: () {
+                  context.push(UploaadePhotoPage.routePath);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

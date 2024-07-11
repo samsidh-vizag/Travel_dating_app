@@ -46,106 +46,111 @@ class SignUpPage extends HookConsumerWidget {
                 end: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: spaces.space_500 * 2,
-                ),
-                HeaddingTextWidget(text: constants.txtHeading),
-                const SizedBox32Widget(),
-                TextfieldWidget(
-                  hintText: constants.txtEmail,
-                  prefixIcon: const Icon(Icons.email),
-                  controller: emailController,
-                ),
-                const SizedBox24Widget(),
-                TextfieldWidget(
-                  hintText: constants.txtPasword,
-                  prefixIcon: const Icon(Icons.lock),
-                  controller: passwordController,
-                ),
-                const SizedBox24Widget(),
-                TextfieldWidget(
-                  hintText: constants.txtConfirmPass,
-                  prefixIcon: const Icon(Icons.lock),
-                  controller: confirmPasswordColtroller,
-                ),
-                const SizedBox24Widget(),
-                ElevatedButtonWidget(
-                  text: appConstants.txtContinue,
-                  onPressed: () {},
-                ),
-                const SizedBox8Widget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 1,
-                      width: MediaQuery.sizeOf(context).width / spaces.space_75,
-                      color: colors.textInverse,
-                    ),
-                    SizedBox(
-                      width: spaces.space_125,
-                    ),
-                    Text(
-                      constants.txtOrSignUpwith,
-                      style: typography.h600,
-                    ),
-                    SizedBox(
-                      width: spaces.space_125,
-                    ),
-                    Container(
-                      height: 1,
-                      width: MediaQuery.sizeOf(context).width / spaces.space_75,
-                      color: colors.textInverse,
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.all(spaces.space_300),
-                  child: Row(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: spaces.space_500 * 2,
+                  ),
+                  HeaddingTextWidget(text: constants.txtHeading),
+                  const SizedBox32Widget(),
+                  TextfieldWidget(
+                    hintText: constants.txtEmail,
+                    prefixIcon: const Icon(Icons.email),
+                    controller: emailController,
+                  ),
+                  const SizedBox24Widget(),
+                  TextfieldWidget(
+                    hintText: constants.txtPasword,
+                    prefixIcon: const Icon(Icons.lock),
+                    controller: passwordController,
+                  ),
+                  const SizedBox24Widget(),
+                  TextfieldWidget(
+                    hintText: constants.txtConfirmPass,
+                    prefixIcon: const Icon(Icons.lock),
+                    controller: confirmPasswordColtroller,
+                  ),
+                  const SizedBox24Widget(),
+                  ElevatedButtonWidget(
+                    text: appConstants.txtContinue,
+                    onPressed: () {},
+                  ),
+                  const SizedBox8Widget(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: ImageButton(
-                          assetText: asset.icFacebook,
-                          buttonText: constants.txtFacebook,
-                        ),
+                      Container(
+                        height: 1,
+                        width:
+                            MediaQuery.sizeOf(context).width / spaces.space_75,
+                        color: colors.textInverse,
                       ),
                       SizedBox(
-                        width: spaces.space_200,
+                        width: spaces.space_125,
                       ),
-                      Expanded(
-                        child: ImageButton(
-                          assetText: asset.icGoogle,
-                          buttonText: constants.txtGoogle,
+                      Text(
+                        constants.txtOrSignUpwith,
+                        style: typography.h600,
+                      ),
+                      SizedBox(
+                        width: spaces.space_125,
+                      ),
+                      Container(
+                        height: 1,
+                        width:
+                            MediaQuery.sizeOf(context).width / spaces.space_75,
+                        color: colors.textInverse,
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(spaces.space_300),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: ImageButton(
+                            assetText: asset.icFacebook,
+                            buttonText: constants.txtFacebook,
+                          ),
+                        ),
+                        SizedBox(
+                          width: spaces.space_200,
+                        ),
+                        Expanded(
+                          child: ImageButton(
+                            assetText: asset.icGoogle,
+                            buttonText: constants.txtGoogle,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox32Widget(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        constants.txtAlreadyAccount,
+                        style: typography.h500,
+                      ),
+                      SizedBox(
+                        width: spaces.space_25,
+                      ),
+                      InkWell(
+                        onTap: () =>
+                            context.push(SignInWithNumberPage.routePath),
+                        child: Text(
+                          constants.txtSignIn,
+                          style: typography.h600.copyWith(
+                            color: colors.primary,
+                          ),
                         ),
                       )
                     ],
-                  ),
-                ),
-                const SizedBox32Widget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      constants.txtAlreadyAccount,
-                      style: typography.h500,
-                    ),
-                    SizedBox(
-                      width: spaces.space_25,
-                    ),
-                    InkWell(
-                      onTap: () => context.push(SignInWithNumberPage.routePath),
-                      child: Text(
-                        constants.txtSignIn,
-                        style: typography.h600.copyWith(
-                          color: colors.primary,
-                        ),
-                      ),
-                    )
-                  ],
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

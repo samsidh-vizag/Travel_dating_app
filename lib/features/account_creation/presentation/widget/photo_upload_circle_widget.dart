@@ -4,18 +4,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
+import 'package:travel_dating_app/core/widgets/image_picker_widget.dart';
 
 class PhotoUploadCircleWidget extends ConsumerWidget {
   final double width;
   final double height;
   final double radius;
   final double iconSize;
+  final String identifier;
   const PhotoUploadCircleWidget({
     super.key,
     required this.height,
     required this.width,
     required this.radius,
     required this.iconSize,
+    required this.identifier,
   });
 
   @override
@@ -40,15 +43,18 @@ class PhotoUploadCircleWidget extends ConsumerWidget {
           color: colors.secondary,
           shape: BoxShape.circle,
         ),
-        child: Center(
-          child: CircleAvatar(
-            backgroundColor: colors.primary,
-            radius: radius,
-            child: SvgPicture.asset(
-              assets.icAdd,
-              // ignore: deprecated_member_use
-              color: colors.secondary,
-              height: iconSize,
+        child: ImagePickerWidget(
+          identifier: identifier,
+          widgets: Center(
+            child: CircleAvatar(
+              backgroundColor: colors.primary,
+              radius: radius,
+              child: SvgPicture.asset(
+                assets.icAdd,
+                // ignore: deprecated_member_use
+                color: colors.secondary,
+                height: iconSize,
+              ),
             ),
           ),
         ),

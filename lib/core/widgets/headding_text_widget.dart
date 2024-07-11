@@ -14,7 +14,7 @@ class HeaddingTextWidget extends StatelessWidget {
       padding: EdgeInsets.only(
         left: spaces.space_800,
         right: spaces.space_800,
-        top: spaces.space_500,
+        top: spaces.space_400,
       ),
       child: Text(
         textAlign: TextAlign.center,

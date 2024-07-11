@@ -23,12 +23,14 @@ class CreateAccountPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ///constants
     final constants = ref.watch(createAccountPageConstantsProvider);
     final appConstants = ref.watch(appConstantsProvider);
     final assets = ref.watch(appAssetConstantsProvider);
+
+    ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
-    final typography = AppTheme.of(context).typography;
 
     ///controller
     final nameController = useTextEditingController();
@@ -68,78 +70,80 @@ class CreateAccountPage extends HookConsumerWidget {
                 end: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-              children: [
-                const Row(
-                  children: [
-                    BackArrowButton(),
-                  ],
-                ),
-                HeaddingTextWidget(text: constants.txtHeading),
-                SubHeaddingTextWidget(text: constants.txtSubHeading),
-                const SizedBox16Widget(),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: spaces.space_400 * 3,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Row(
+                    children: [
+                      BackArrowButton(),
+                    ],
                   ),
-                  child: ProgressbarContainer(
-                    stepOne: colors.primary,
-                    stepTwo: colors.primary,
-                    stepThree: colors.textSubtlest,
-                    stepFour: colors.textSubtlest,
-                    stepFive: colors.textSubtlest,
+                  HeaddingTextWidget(text: constants.txtHeading),
+                  SubHeaddingTextWidget(text: constants.txtSubHeading),
+                  const SizedBox16Widget(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: spaces.space_400 * 3,
+                    ),
+                    child: ProgressbarContainer(
+                      stepOne: colors.primary,
+                      stepTwo: colors.primary,
+                      stepThree: colors.textSubtlest,
+                      stepFour: colors.textSubtlest,
+                      stepFive: colors.textSubtlest,
+                    ),
                   ),
-                ),
-                const SizedBox24Widget(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    for (var i = 0; i < tabsToShow.length; i++)
-                      TabButtonWidget(
-                        buttonText: tabsToShow[i]['text'] as String,
-                        isSelected:
-                            selectedTabType.value == tabsToShow[i]['type'],
-                        onPressed: () => tabOnPressed(i),
-                        imageText: tabsToShow[i]['type'] as String,
-                      ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: spaces.space_300,
+                  const SizedBox24Widget(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      for (var i = 0; i < tabsToShow.length; i++)
+                        TabButtonWidget(
+                          buttonText: tabsToShow[i]['text'] as String,
+                          isSelected:
+                              selectedTabType.value == tabsToShow[i]['type'],
+                          onPressed: () => tabOnPressed(i),
+                          imageText: tabsToShow[i]['type'] as String,
+                        ),
+                    ],
                   ),
-                  child: Divider(
-                    color: colors.primary,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: spaces.space_300,
+                    ),
+                    child: Divider(
+                      color: colors.primary,
+                    ),
                   ),
-                ),
-                TextFieldAndTitleWidget(
-                  enabled: true,
-                  textFieldTitle: constants.txtName,
-                  hintText: constants.txtEnterName,
-                  controller: nameController,
-                ),
-                TextFieldAndTitleWidget(
-                  enabled: true,
-                  textFieldTitle: constants.txtEmail,
-                  hintText: constants.txtEnterEmail,
-                  controller: emailController,
-                ),
-                TextFieldAndTitleWidget(
-                  enabled: true,
-                  textFieldTitle: constants.txtDateOfBirth,
-                  hintText: constants.txtDate,
-                  controller: nameController,
-                ),
-                SizedBox(
-                  height: spaces.space_500,
-                ),
-                ElevatedButtonWidget(
-                  text: appConstants.txtContinue,
-                  onPressed: () {
-                    context.push(CategoryPage.routePath);
-                  },
-                ),
-              ],
+                  TextFieldAndTitleWidget(
+                    enabled: true,
+                    textFieldTitle: constants.txtName,
+                    hintText: constants.txtEnterName,
+                    controller: nameController,
+                  ),
+                  TextFieldAndTitleWidget(
+                    enabled: true,
+                    textFieldTitle: constants.txtEmail,
+                    hintText: constants.txtEnterEmail,
+                    controller: emailController,
+                  ),
+                  TextFieldAndTitleWidget(
+                    enabled: true,
+                    textFieldTitle: constants.txtDateOfBirth,
+                    hintText: constants.txtDate,
+                    controller: nameController,
+                  ),
+                  SizedBox(
+                    height: spaces.space_500,
+                  ),
+                  ElevatedButtonWidget(
+                    text: appConstants.txtContinue,
+                    onPressed: () {
+                      context.push(CategoryPage.routePath);
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
