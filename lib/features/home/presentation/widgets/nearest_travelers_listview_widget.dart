@@ -12,8 +12,6 @@ class NearestTravelersListviewWidget extends ConsumerWidget {
     ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
-    final typography = AppTheme.of(context).typography;
-    final boxShadow = AppTheme.of(context).boxShadow;
 
     /// constants
     final asset = ref.watch(appAssetConstantsProvider);
@@ -63,7 +61,7 @@ class NearestTravelersListviewWidget extends ConsumerWidget {
                           ),
                         ),
                       ),
-                      SizedBox16Widget(),
+                      const SizedBox16Widget(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [

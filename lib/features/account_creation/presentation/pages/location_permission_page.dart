@@ -22,7 +22,6 @@ class LocationPermissionPage extends ConsumerWidget {
 
     ///theme
     final colors = AppTheme.of(context).colors;
-    final spaces = AppTheme.of(context).spaces;
     final typography = AppTheme.of(context).typography;
 
     return Scaffold(

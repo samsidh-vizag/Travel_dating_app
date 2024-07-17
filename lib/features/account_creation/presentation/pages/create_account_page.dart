@@ -53,7 +53,7 @@ class CreateAccountPage extends HookConsumerWidget {
 
     /// Handle tapping on the tab items
     void tabOnPressed(int index) {
-      selectedTabType.value = tabsToShow[index]['type'] as String?;
+      selectedTabType.value = tabsToShow[index]['type'];
     }
 
     return Scaffold(

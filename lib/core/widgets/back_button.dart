@@ -37,8 +37,8 @@ class BackArrowButton extends ConsumerWidget {
               child: SvgPicture.asset(
                 assets.icArrowBackward,
                 height: spaces.space_200,
-                // colorFilter:
-                //     ColorFilter.mode(colors.primary, BlendMode.srcATop),
+                colorFilter:
+                    ColorFilter.mode(colors.primary, BlendMode.srcATop),
               ),
             ),
           ),

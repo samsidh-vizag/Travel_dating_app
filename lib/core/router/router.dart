@@ -10,6 +10,7 @@ import 'package:travel_dating_app/features/authentication/presentation/pages/otp
 import 'package:travel_dating_app/features/authentication/presentation/pages/sign_up_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/signin_with_number_page.dart';
 import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/create_trip_page.dart';
 import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
 import 'package:travel_dating_app/features/matches/presentation/pages/matches_page.dart';
 
@@ -64,6 +65,10 @@ final router =
   GoRoute(
     path: MatchesPage.routePath,
     builder: (context, state) => const MatchesPage(),
+  ),
+  GoRoute(
+    path: CreateTripPage.routePath,
+    builder: (context, state) => const CreateTripPage(),
   ),
 ]);
 

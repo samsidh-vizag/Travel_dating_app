@@ -44,6 +44,7 @@ class ImagePickerUtils {
                   onPressed: () async {
                     imageCompleter.complete(
                         await ImagePickerUtils.pickImageFromCamera(context));
+                    // ignore: use_build_context_synchronously
                     context.pop();
                   },
                   child: const Text(
@@ -54,6 +55,7 @@ class ImagePickerUtils {
                     imageCompleter.complete(
                       await ImagePickerUtils.pickImageFromGallery(context),
                     );
+                    // ignore: use_build_context_synchronously
                     context.pop();
                   },
                   child: const Text(

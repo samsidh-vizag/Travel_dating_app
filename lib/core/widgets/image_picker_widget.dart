@@ -45,6 +45,7 @@ class ImagePickerWidget extends ConsumerWidget {
       onTap: () async {
         final imageSelected =
             await ImagePickerUtils.showDialogueForImagePicker(context);
+        // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
         ref.read(imageProvider(identifier).notifier).state = imageSelected;
       },
       child: imageToShow ?? widgets,

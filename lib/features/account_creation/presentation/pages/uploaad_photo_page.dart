@@ -69,35 +69,41 @@ class UploaadePhotoPage extends HookConsumerWidget {
               Stack(
                 children: [
                   SizedBox(
-                    width: double.infinity,
+                    width: MediaQuery.sizeOf(context).width,
                     height: 340,
-                    child: Image.asset(assets.imgBackgroundPhoto),
-                  ),
-                  Positioned(
-                    top: 77,
-                    left: 114,
                     child: Container(
-                      height: spaces.space_100 * 23,
-                      width: spaces.space_100 * 23,
                       decoration: BoxDecoration(
-                        color: colors.secondary,
-                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage(
+                            assets.imgBackgroundPhoto,
+                          ),
+                        ),
                       ),
-                      child: ImagePickerWidget(
-                        identifier: 'main',
-                        widgets: SizedBox(
-                          height: 40,
-                          width: 40,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                assets.icAddImage,
-                                // ignore: deprecated_member_use
-                                color: colors.primary,
+                      child: Center(
+                        child: Container(
+                          height: spaces.space_100 * 23,
+                          width: spaces.space_100 * 23,
+                          decoration: BoxDecoration(
+                            color: colors.secondary,
+                            shape: BoxShape.circle,
+                          ),
+                          child: ImagePickerWidget(
+                            identifier: 'main',
+                            widgets: SizedBox(
+                              height: 40,
+                              width: 40,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    assets.icAddImage,
+                                    // ignore: deprecated_member_use
+                                    color: colors.primary,
+                                  ),
+                                  Text(constants.txtAddImage),
+                                ],
                               ),
-                              Text(constants.txtAddImage),
-                            ],
+                            ),
                           ),
                         ),
                       ),

@@ -10,6 +10,7 @@ class UserProfileGridviewWidget extends StatelessWidget {
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
     final typography = AppTheme.of(context).typography;
+
     return GridView.builder(
       itemCount: 8,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -41,7 +42,7 @@ class UserProfileGridviewWidget extends StatelessWidget {
                   ),
                   color: colors.secondary.withOpacity(.6),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text("12 KM Away"),
                 ),
               ),
@@ -61,7 +62,7 @@ class UserProfileGridviewWidget extends StatelessWidget {
                         "Name",
                         style: typography.h600,
                       ),
-                      Text(
+                      const Text(
                         "place",
                       ),
                     ],

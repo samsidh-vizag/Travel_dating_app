@@ -7,7 +7,7 @@ class AppConstants {
   final String txtHome = 'Home';
   final String txtChat = 'Chat';
   final String txtMatches = 'Matches';
-  final String txtProfile = 'Profile';
+  final String txtCreate = 'Create';
   final String txtCamera = 'Camara';
   final String txtGallery = 'Gallery';
   final String txtDelete = 'Delete';

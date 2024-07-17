@@ -3,9 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
-import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/page_title_widget.dart';
-import 'package:travel_dating_app/features/matches/presentation/widgets/user_profile_lgridview_widget.dart';
+import 'package:travel_dating_app/features/matches/presentation/widgets/tab_bar_listview_widget.dart';
+import 'package:travel_dating_app/features/matches/presentation/widgets/user_profile_gridview_widget.dart';
 
 class MatchesPage extends HookConsumerWidget {
   static const routePath = '/matchesPage';
@@ -43,12 +43,13 @@ class MatchesPage extends HookConsumerWidget {
                   PageTitleWidget(
                     title: appConstants.txtMatches,
                   ),
-                  SizedBox16Widget(),
+                  const SizedBox16Widget(),
+                  const TabBarListviewWidget(),
                   SizedBox(
                     height: MediaQuery.sizeOf(context).height,
-                    child: UserProfileGridviewWidget(),
+                    child: const UserProfileGridviewWidget(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 500,
                   )
                 ],
