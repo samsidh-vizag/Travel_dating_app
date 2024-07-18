@@ -8,6 +8,7 @@ import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/interest_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/request_join_page.dart';
 import 'package:travel_dating_app/features/create/presentation/widgets/button_container_widget.dart';
 
 class CreateTripPage extends ConsumerWidget {
@@ -56,7 +57,9 @@ class CreateTripPage extends ConsumerWidget {
             ButtonContainerWidget(
               text: constants.txtRequestJoin,
               image: asset.icJoin,
-              onTap: () {},
+              onTap: () {
+                context.push(RequestJoinPage.routePath);
+              },
             ),
           ],
         ),

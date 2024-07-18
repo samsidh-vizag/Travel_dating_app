@@ -10,6 +10,7 @@ import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/page_title_widget.dart';
 import 'package:travel_dating_app/features/profile/presentation/pages/edit_profil_page.dart';
+import 'package:travel_dating_app/features/profile/presentation/pages/settings_page.dart';
 import 'package:travel_dating_app/features/profile/presentation/widgets/circle_button_widget.dart';
 import 'package:travel_dating_app/features/profile/presentation/widgets/profile_image_widget.dart';
 
@@ -81,7 +82,9 @@ class ProfilePage extends ConsumerWidget {
                       CircleButton(
                         image: asset.icSettings,
                         text: constants.txtSettings,
-                        onPressed: () {},
+                        onPressed: () {
+                          context.push(SettingsPage.routePath);
+                        },
                       ),
                       CircleButton(
                         image: asset.icSecurity,

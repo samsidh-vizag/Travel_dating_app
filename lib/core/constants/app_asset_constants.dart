@@ -47,6 +47,12 @@ final class AppAssetConstants {
   final String icHelp = '${_imagePath}help.png';
   final String icSecurity = '${_imagePath}security.png';
   final String imgNoNotification = '${_imagePath}no_notification.png';
+  final String icPrivacy = '${_imagePath}privacy.png';
+  final String icSos = '${_imagePath}sos.png';
+  final String icDark = '${_imagePath}dark.png';
+  final String icSocial = '${_imagePath}social.png';
+  final String icAbout = '${_imagePath}about.png';
+  final String icLigout = '${_imagePath}logout.png';
 }
 
 @riverpod

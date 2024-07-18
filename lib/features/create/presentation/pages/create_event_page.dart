@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/create_trip_constants/create_event_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
@@ -9,6 +10,7 @@ import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/button_eleveted_widget.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/textfiels_and_title_widget.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/create_schedule_page.dart';
 import 'package:travel_dating_app/features/create/presentation/widgets/image_container.dart';
 
 class CreateEventPage extends HookConsumerWidget {
@@ -87,7 +89,9 @@ class CreateEventPage extends HookConsumerWidget {
                   ),
                   ButtonElevatedWidget(
                     text: constants.txtSchedule,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.push(CreateSchedulePage.routePath);
+                    },
                   ),
                   const SizedBox32Widget(),
                   ElevatedButtonWidget(

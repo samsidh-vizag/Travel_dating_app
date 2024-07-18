@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
+import 'package:travel_dating_app/core/constants/matches_constants/matches_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/page_title_widget.dart';
-import 'package:travel_dating_app/features/matches/presentation/widgets/tab_bar_listview_widget.dart';
+import 'package:travel_dating_app/features/matches/presentation/widgets/tab_bar_widget.dart';
 import 'package:travel_dating_app/features/matches/presentation/widgets/user_profile_gridview_widget.dart';
 
 class MatchesPage extends HookConsumerWidget {
@@ -19,6 +21,57 @@ class MatchesPage extends HookConsumerWidget {
 
     ///constans
     final appConstants = ref.watch(appConstantsProvider);
+    final constants = ref.watch(matchesPageConstantsProvider);
+
+    /// Tabs to show
+    final tabsToShow = useMemoized(() => [
+          {
+            'text': constants.txtAll,
+            'type': constants.txtAll,
+          },
+          {
+            'text': constants.txtNewest,
+            'type': constants.txtNewest,
+          },
+          {
+            'text': constants.txtOnline,
+            'type': constants.txtOnline,
+          },
+          {
+            'text': constants.txtNearest,
+            'type': constants.txtNearest,
+          }
+        ]);
+
+    /// Selected tab
+    final selectedTabType = useState<String?>(tabsToShow[0]['text']);
+
+    /// Handle tapping on the tab items
+    void tabOnPressed(int index) {
+      selectedTabType.value = tabsToShow[index]['type'];
+    }
+
+    /// Widget for each tab change
+    Widget getTabContent() {
+      switch (selectedTabType.value) {
+        case 'Newest':
+          return const Center(
+            child: Text("Newest"),
+          );
+        case 'Online':
+          return const Center(
+            child: Text("Online"),
+          );
+        case 'Nearest':
+          return const Center(
+            child: Text("Nearest"),
+          );
+        case 'All':
+          return const UserProfileGridviewWidget();
+        default:
+          return const UserProfileGridviewWidget();
+      }
+    }
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -44,10 +97,26 @@ class MatchesPage extends HookConsumerWidget {
                     title: appConstants.txtMatches,
                   ),
                   const SizedBox16Widget(),
-                  const TabBarListviewWidget(),
+                  SizedBox(
+                    height: spaces.space_500,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        for (var i = 0; i < tabsToShow.length; i++)
+                          TabBarButtonWidget(
+                            onPressed: () {
+                              tabOnPressed(i);
+                            },
+                            text: tabsToShow[i]['text'] as String,
+                            isSelected:
+                                selectedTabType.value == tabsToShow[i]['type'],
+                          )
+                      ],
+                    ),
+                  ),
                   SizedBox(
                     height: MediaQuery.sizeOf(context).height,
-                    child: const UserProfileGridviewWidget(),
+                    child: getTabContent(),
                   ),
                   const SizedBox(
                     height: 500,

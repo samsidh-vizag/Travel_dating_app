@@ -11,13 +11,16 @@ import 'package:travel_dating_app/features/authentication/presentation/pages/sig
 import 'package:travel_dating_app/features/authentication/presentation/pages/signin_with_number_page.dart';
 import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/create_event_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/create_schedule_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/create_trip_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/interest_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/request_join_page.dart';
 import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
 import 'package:travel_dating_app/features/matches/presentation/pages/matches_page.dart';
 import 'package:travel_dating_app/features/notification/presentation/pages/notification_page.dart';
 import 'package:travel_dating_app/features/profile/presentation/pages/edit_profil_page.dart';
 import 'package:travel_dating_app/features/profile/presentation/pages/profile_page.dart';
+import 'package:travel_dating_app/features/profile/presentation/pages/settings_page.dart';
 
 part 'router.g.dart';
 
@@ -94,6 +97,18 @@ final router =
   GoRoute(
     path: EditProfilPage.routePath,
     builder: (context, state) => const EditProfilPage(),
+  ),
+  GoRoute(
+    path: CreateSchedulePage.routePath,
+    builder: (context, state) => const CreateSchedulePage(),
+  ),
+  GoRoute(
+    path: RequestJoinPage.routePath,
+    builder: (context, state) => const RequestJoinPage(),
+  ),
+  GoRoute(
+    path: SettingsPage.routePath,
+    builder: (context, state) => const SettingsPage(),
   ),
 ]);
 
