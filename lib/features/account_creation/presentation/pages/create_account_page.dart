@@ -137,6 +137,7 @@ class CreateAccountPage extends HookConsumerWidget {
                     height: spaces.space_500,
                   ),
                   ElevatedButtonWidget(
+                    color: colors.primary,
                     text: appConstants.txtContinue,
                     onPressed: () {
                       context.push(CategoryPage.routePath);

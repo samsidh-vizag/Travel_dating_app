@@ -5,31 +5,33 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/account_creation_contants/select_interest_page_constants.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
+import 'package:travel_dating_app/core/constants/create_trip_constants/interest_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
-import 'package:travel_dating_app/core/widgets/progressbar_container.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
 import 'package:travel_dating_app/features/account_creation/presentation/pages/uploaad_photo_page.dart';
 import 'package:travel_dating_app/core/widgets/button_interested_item_widget.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/create_event_page.dart';
 
-class SelectInterestPage extends HookConsumerWidget {
-  static const routePath = '/interest';
-  const SelectInterestPage({super.key});
+class InterestPage extends HookConsumerWidget {
+  static const routePath = '/interests';
+  const InterestPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ///constamts
-    final constants = ref.watch(selectInterestPageConstantsProvider);
+    final constants = ref.watch(interestPageConstantsProvider);
     final asset = ref.watch(appAssetConstantsProvider);
     final appConstants = ref.watch(appConstantsProvider);
 
     ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
+    final typography = AppTheme.of(context).typography;
 
     ///button to show
     final tabsToShow = useMemoized(() => [
@@ -110,9 +112,20 @@ class SelectInterestPage extends HookConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Row(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  BackArrowButton(),
+                  const BackArrowButton(),
+                  TextButton(
+                    onPressed: () {
+                      context.push(CreateEventPage.routePath);
+                    },
+                    child: Text(
+                      constants.txtSkip,
+                      style: typography.h400.copyWith(color: colors.primary),
+                    ),
+                  ),
                 ],
               ),
               HeaddingTextWidget(text: constants.txtHeading),
@@ -121,13 +134,6 @@ class SelectInterestPage extends HookConsumerWidget {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: spaces.space_400 * 3,
-                ),
-                child: ProgressbarContainer(
-                  stepOne: colors.primary,
-                  stepTwo: colors.primary,
-                  stepThree: colors.primary,
-                  stepFour: colors.primary,
-                  stepFive: colors.textSubtlest,
                 ),
               ),
               const SizedBox24Widget(),
@@ -161,7 +167,7 @@ class SelectInterestPage extends HookConsumerWidget {
                 color: colors.primary,
                 text: appConstants.txtContinue,
                 onPressed: () {
-                  context.push(UploaadePhotoPage.routePath);
+                  context.push(CreateEventPage.routePath);
                 },
               ),
             ],

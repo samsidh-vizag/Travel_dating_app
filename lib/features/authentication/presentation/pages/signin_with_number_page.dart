@@ -80,14 +80,9 @@ class SignInWithNumberPage extends HookConsumerWidget {
                       },
                     ),
                   ),
-
-                  // TextfieldWidget(
-                  //   hintText: constants.txtEnterPhone,
-                  //   prefixIcon: const Icon(Icons.email),
-                  //   controller: phoneNumberController,
-                  // ),
                   const SizedBox24Widget(),
                   ElevatedButtonWidget(
+                    color: colors.primary,
                     text: appConstants.txtContinue,
                     onPressed: () {
                       context.push(OtpVerificationPage.routePath);

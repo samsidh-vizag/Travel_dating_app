@@ -107,6 +107,7 @@ class OtpVerificationPage extends HookConsumerWidget {
                 ),
                 const SizedBox16Widget(),
                 ElevatedButtonWidget(
+                  color: colors.primary,
                   text: constants.txtVerify,
                   onPressed: () {
                     context.push(CreateAccountPage.routePath);

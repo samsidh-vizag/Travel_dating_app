@@ -4,9 +4,14 @@ import 'package:travel_dating_app/core/theme/app_theme.dart';
 
 class ElevatedButtonWidget extends ConsumerWidget {
   final String text;
+  final Color color;
   final void Function() onPressed;
-  const ElevatedButtonWidget(
-      {super.key, required this.text, required this.onPressed});
+  const ElevatedButtonWidget({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    required this.color,
+  });
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appTheme = AppTheme.of(context);
@@ -24,7 +29,7 @@ class ElevatedButtonWidget extends ConsumerWidget {
                     WidgetStatePropertyAll(appTheme.colors.primary),
                 shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.circular(appTheme.spaces.space_100)))),
+                        BorderRadius.circular(appTheme.spaces.space_150)))),
             onPressed: onPressed,
             child: Text(
               text,

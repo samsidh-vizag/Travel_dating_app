@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/create_trip_constants/create_trip_constants_page.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/interest_page.dart';
 import 'package:travel_dating_app/features/create/presentation/widgets/button_container_widget.dart';
 
 class CreateTripPage extends ConsumerWidget {
@@ -46,11 +48,15 @@ class CreateTripPage extends ConsumerWidget {
             ButtonContainerWidget(
               text: constants.txtCreateTrip,
               image: asset.icCar,
+              onTap: () {
+                context.push(InterestPage.routePath);
+              },
             ),
             const SizedBox24Widget(),
             ButtonContainerWidget(
               text: constants.txtRequestJoin,
               image: asset.icJoin,
+              onTap: () {},
             ),
           ],
         ),

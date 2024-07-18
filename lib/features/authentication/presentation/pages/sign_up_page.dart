@@ -73,6 +73,7 @@ class SignUpPage extends HookConsumerWidget {
                   ),
                   const SizedBox24Widget(),
                   ElevatedButtonWidget(
+                    color: colors.primary,
                     text: appConstants.txtContinue,
                     onPressed: () {},
                   ),
