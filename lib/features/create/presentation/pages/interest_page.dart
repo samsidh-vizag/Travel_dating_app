@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:travel_dating_app/core/constants/account_creation_contants/select_interest_page_constants.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/constants/create_trip_constants/interest_page_constants.dart';
@@ -13,7 +12,6 @@ import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
-import 'package:travel_dating_app/features/account_creation/presentation/pages/uploaad_photo_page.dart';
 import 'package:travel_dating_app/core/widgets/button_interested_item_widget.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/create_event_page.dart';
 

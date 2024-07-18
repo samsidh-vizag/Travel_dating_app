@@ -16,7 +16,7 @@ class TabBarListviewWidget extends HookConsumerWidget {
     final spaces = AppTheme.of(context).spaces;
 
     /// Tabs to show
-    final tabsText = useMemoized(() => [
+    final tabsToShow = useMemoized(() => [
           {
             'text': constants.txtAll,
             'type': constants.txtAll,
@@ -36,11 +36,11 @@ class TabBarListviewWidget extends HookConsumerWidget {
         ]);
 
     /// Selected tab
-    final selectedTabType = useState<String?>(null);
+    final selectedTabType = useState<String?>(tabsToShow[0]['text']);
 
     /// Handle tapping on the tab items
     void tabOnPressed(int index) {
-      selectedTabType.value = tabsText[index]['type'];
+      selectedTabType.value = tabsToShow[index]['type'];
     }
 
     return SizedBox(
@@ -48,13 +48,13 @@ class TabBarListviewWidget extends HookConsumerWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          for (var i = 0; i < tabsText.length; i++)
+          for (var i = 0; i < tabsToShow.length; i++)
             TabBarButtonWidget(
               onPressed: () {
                 tabOnPressed(i);
               },
-              text: tabsText[i]['text'] as String,
-              isSelected: selectedTabType.value == tabsText[i]['type'],
+              text: tabsToShow[i]['text'] as String,
+              isSelected: selectedTabType.value == tabsToShow[i]['type'],
             )
         ],
       ),

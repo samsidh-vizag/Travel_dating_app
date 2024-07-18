@@ -19,8 +19,6 @@ class CreateEventPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ///theme
     final colors = AppTheme.of(context).colors;
-    final spaces = AppTheme.of(context).spaces;
-    final typography = AppTheme.of(context).typography;
 
     ///constants
     final constants = ref.watch(createEventPageConstantsProvider);
@@ -46,13 +44,13 @@ class CreateEventPage extends HookConsumerWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       BackArrowButton(),
                     ],
                   ),
-                  SizedBox16Widget(),
-                  ImageContainer(),
+                  const SizedBox16Widget(),
+                  const ImageContainer(),
                   TextFieldAndTitleWidget(
                     enabled: true,
                     textFieldTitle: constants.txtTripTitle,
@@ -63,7 +61,7 @@ class CreateEventPage extends HookConsumerWidget {
                     enabled: true,
                     textFieldTitle: constants.txtTripDetails,
                     hintText: constants.txtEnterTripDetails,
-                    controller: titleController,
+                    controller: detailsController,
                   ),
                   Row(
                     children: [
@@ -91,7 +89,7 @@ class CreateEventPage extends HookConsumerWidget {
                     text: constants.txtSchedule,
                     onPressed: () {},
                   ),
-                  SizedBox32Widget(),
+                  const SizedBox32Widget(),
                   ElevatedButtonWidget(
                     text: constants.txtContinue,
                     onPressed: () {},

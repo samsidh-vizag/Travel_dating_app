@@ -5,7 +5,6 @@ import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/notification_constants/notification_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
-import 'package:travel_dating_app/core/widgets/8px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/page_title_widget.dart';
@@ -21,7 +20,6 @@ class NotificationPage extends HookConsumerWidget {
     ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
-    final typography = AppTheme.of(context).typography;
 
     ///constants
     final constants = ref.watch(notificationPageConstantsProvider);
@@ -38,7 +36,7 @@ class NotificationPage extends HookConsumerWidget {
         ]);
 
     /// Selected tab
-    final selectedTabType = useState<String?>(null);
+    final selectedTabType = useState<String?>(tabsToShow[0]['text']);
 
     /// Handle tapping on the tab items
     void tabOnPressed(int index) {
@@ -72,7 +70,7 @@ class NotificationPage extends HookConsumerWidget {
                     title: constants.txtNotifications,
                   ),
                 ),
-                SizedBox16Widget(),
+                const SizedBox16Widget(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                   child: Container(

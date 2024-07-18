@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:travel_dating_app/core/constants/account_creation_contants/upload_photo_page_constants.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/profile_constants/profile_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
-import 'package:travel_dating_app/core/widgets/image_picker_widget.dart';
 
 class ProfileImageWidget extends ConsumerWidget {
   const ProfileImageWidget({super.key});
@@ -75,7 +73,7 @@ class ProfileImageWidget extends ConsumerWidget {
                 padding: EdgeInsets.symmetric(
                     horizontal: spaces.space_300, vertical: spaces.space_100),
                 child: Text(
-                  '50% ' + constants.txtComplete,
+                  '50% ${constants.txtComplete}',
                   style: typography.h600.copyWith(color: colors.secondary),
                 ),
               ),
