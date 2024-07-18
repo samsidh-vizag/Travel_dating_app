@@ -6,6 +6,7 @@ import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
+import 'package:travel_dating_app/core/widgets/button_eleveted_widget.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/textfiels_and_title_widget.dart';
 import 'package:travel_dating_app/features/create/presentation/widgets/image_container.dart';
@@ -86,12 +87,15 @@ class CreateEventPage extends HookConsumerWidget {
                       ),
                     ],
                   ),
+                  ButtonElevatedWidget(
+                    text: constants.txtSchedule,
+                    onPressed: () {},
+                  ),
                   SizedBox32Widget(),
                   ElevatedButtonWidget(
-                    color: colors.primary,
                     text: constants.txtContinue,
                     onPressed: () {},
-                  )
+                  ),
                 ],
               ),
             ),

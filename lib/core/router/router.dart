@@ -15,6 +15,9 @@ import 'package:travel_dating_app/features/create/presentation/pages/create_trip
 import 'package:travel_dating_app/features/create/presentation/pages/interest_page.dart';
 import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
 import 'package:travel_dating_app/features/matches/presentation/pages/matches_page.dart';
+import 'package:travel_dating_app/features/notification/presentation/pages/notification_page.dart';
+import 'package:travel_dating_app/features/profile/presentation/pages/edit_profil_page.dart';
+import 'package:travel_dating_app/features/profile/presentation/pages/profile_page.dart';
 
 part 'router.g.dart';
 
@@ -79,6 +82,18 @@ final router =
   GoRoute(
     path: CreateEventPage.routePath,
     builder: (context, state) => const CreateEventPage(),
+  ),
+  GoRoute(
+    path: NotificationPage.routePath,
+    builder: (context, state) => const NotificationPage(),
+  ),
+  GoRoute(
+    path: ProfilePage.routePath,
+    builder: (context, state) => const ProfilePage(),
+  ),
+  GoRoute(
+    path: EditProfilPage.routePath,
+    builder: (context, state) => const EditProfilPage(),
   ),
 ]);
 

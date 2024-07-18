@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 
-class ElevatedButtonWidget extends ConsumerWidget {
+class ButtonElevatedWidget extends ConsumerWidget {
   final String text;
   final void Function() onPressed;
 
-  const ElevatedButtonWidget({
+  const ButtonElevatedWidget({
     super.key,
     required this.text,
     required this.onPressed,
@@ -25,17 +25,22 @@ class ElevatedButtonWidget extends ConsumerWidget {
         width: MediaQuery.sizeOf(context).width,
         child: ElevatedButton(
             style: ButtonStyle(
-                elevation: const WidgetStatePropertyAll(0),
-                backgroundColor:
-                    WidgetStatePropertyAll(appTheme.colors.primary),
-                shape: WidgetStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(appTheme.spaces.space_100)))),
+              elevation: const WidgetStatePropertyAll(0),
+              backgroundColor:
+                  WidgetStatePropertyAll(appTheme.colors.secondary),
+              shape: WidgetStatePropertyAll(
+                RoundedRectangleBorder(
+                  side: BorderSide(color: appTheme.colors.primary),
+                  borderRadius:
+                      BorderRadius.circular(appTheme.spaces.space_100),
+                ),
+              ),
+            ),
             onPressed: onPressed,
             child: Text(
               text,
               style: appTheme.typography.uiSemibold
-                  .copyWith(color: appTheme.colors.secondary),
+                  .copyWith(color: appTheme.colors.primary),
             )),
       ),
     );

@@ -164,7 +164,6 @@ class InterestPage extends HookConsumerWidget {
                 ),
               ),
               ElevatedButtonWidget(
-                color: colors.primary,
                 text: appConstants.txtContinue,
                 onPressed: () {
                   context.push(CreateEventPage.routePath);

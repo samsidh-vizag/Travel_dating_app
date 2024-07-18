@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/home_constants/home_page_constatns.dart';
@@ -14,6 +15,8 @@ import 'package:travel_dating_app/features/home/presentation/widgets/upcoming_to
 import 'package:travel_dating_app/features/home/presentation/widgets/search_text_fieald_widget.dart';
 import 'package:travel_dating_app/features/home/presentation/widgets/story_view_listview_widget.dart';
 import 'package:travel_dating_app/features/home/presentation/widgets/title_widget.dart';
+import 'package:travel_dating_app/features/notification/presentation/pages/notification_page.dart';
+import 'package:travel_dating_app/features/profile/presentation/pages/profile_page.dart';
 
 class HomePage extends HookConsumerWidget {
   static const routePath = '/homepage';
@@ -56,12 +59,24 @@ class HomePage extends HookConsumerWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ButtonWidget(assetName: asset.icMale),
+                      ButtonWidget(
+                        assetName: asset.icMale,
+                        onTap: () {
+                          context.push(ProfilePage.routePath);
+                        },
+                      ),
                       Text(
                         constants.txtTitle,
                         style: typography.h700,
                       ),
-                      ButtonWidget(assetName: asset.icNotification),
+                      ButtonWidget(
+                        assetName: asset.icNotification,
+                        onTap: () {
+                          context.push(
+                            NotificationPage.routePath,
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -77,7 +92,10 @@ class HomePage extends HookConsumerWidget {
                             color: colors.primary,
                           ),
                           controller: searchController),
-                      ButtonWidget(assetName: asset.icFilter)
+                      ButtonWidget(
+                        assetName: asset.icFilter,
+                        onTap: () {},
+                      )
                     ],
                   ),
                 ),

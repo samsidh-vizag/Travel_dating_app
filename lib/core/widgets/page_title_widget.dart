@@ -15,7 +15,7 @@ class PageTitleWidget extends StatelessWidget {
           title,
           style: theme.typography.h800.copyWith(
             fontWeight: FontWeight.w600,
-            fontSize: theme.spaces.space_400,
+            fontSize: theme.spaces.space_300,
           ),
         ),
       ],

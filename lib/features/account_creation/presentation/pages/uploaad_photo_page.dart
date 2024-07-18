@@ -171,7 +171,6 @@ class UploaadePhotoPage extends HookConsumerWidget {
                 height: spaces.space_500,
               ),
               ElevatedButtonWidget(
-                color: colors.primary,
                 text: constants.txtComplete,
                 onPressed: () {
                   context.push(LocationPermissionPage.routePath);

@@ -43,7 +43,6 @@ class LocationPermissionPage extends ConsumerWidget {
             SubHeaddingTextWidget(text: constants.txtSubHeading),
             const SizedBox8Widget(),
             ElevatedButtonWidget(
-              color: colors.primary,
               text: constants.txtAllow,
               onPressed: () {
                 context.push(BottomNaviWidget.routePath);

@@ -82,7 +82,6 @@ class SignInWithNumberPage extends HookConsumerWidget {
                   ),
                   const SizedBox24Widget(),
                   ElevatedButtonWidget(
-                    color: colors.primary,
                     text: appConstants.txtContinue,
                     onPressed: () {
                       context.push(OtpVerificationPage.routePath);
