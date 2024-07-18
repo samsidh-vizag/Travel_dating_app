@@ -40,6 +40,8 @@ final class AppAssetConstants {
   final String icHeartWhite = '${_imagePath}heart_white.png';
   final String icSter = '${_imagePath}star.png';
   final String icCross = '${_imagePath}cross.png';
+  final String icCar = '${_imagePath}car.png';
+  final String icJoin = '${_imagePath}join.png';
 }
 
 @riverpod
