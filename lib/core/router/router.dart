@@ -13,8 +13,14 @@ import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dar
 import 'package:travel_dating_app/features/create/presentation/pages/create_event_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/create_schedule_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/create_trip_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/driver_overview_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/interest_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/request_join_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/select_driver_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/select_transport_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/transport_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/trip_details_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/vehicle_overview_page.dart';
 import 'package:travel_dating_app/features/home/presentation/pages/home_page.dart';
 import 'package:travel_dating_app/features/matches/presentation/pages/matches_page.dart';
 import 'package:travel_dating_app/features/notification/presentation/pages/notification_page.dart';
@@ -109,6 +115,30 @@ final router =
   GoRoute(
     path: SettingsPage.routePath,
     builder: (context, state) => const SettingsPage(),
+  ),
+  GoRoute(
+    path: TransportPage.routePath,
+    builder: (context, state) => const TransportPage(),
+  ),
+  GoRoute(
+    path: SelectTransportPage.routePath,
+    builder: (context, state) => const SelectTransportPage(),
+  ),
+  GoRoute(
+    path: VehicleOverviewPage.routePath,
+    builder: (context, state) => const VehicleOverviewPage(),
+  ),
+  GoRoute(
+    path: SelectDriverPage.routePath,
+    builder: (context, state) => const SelectDriverPage(),
+  ),
+  GoRoute(
+    path: DriverOverviewPage.routePath,
+    builder: (context, state) => const DriverOverviewPage(),
+  ),
+  GoRoute(
+    path: TripDetailsPage.routePath,
+    builder: (context, state) => const TripDetailsPage(),
   ),
 ]);
 

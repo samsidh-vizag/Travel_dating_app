@@ -11,6 +11,7 @@ final class AppAssetConstants {
   final String icArrowBackward = '${_iconsPath}arrow_backward_icon.svg';
   final String icAddImage = '${_iconsPath}add_image_icon.svg';
   final String icAdd = '${_iconsPath}add_icon.svg';
+  final String icSave = '${_iconsPath}save.svg';
 
   /// Prefix used for the app images
   static const _imagePath = 'assets/images/img_';
@@ -53,6 +54,16 @@ final class AppAssetConstants {
   final String icSocial = '${_imagePath}social.png';
   final String icAbout = '${_imagePath}about.png';
   final String icLigout = '${_imagePath}logout.png';
+  final String imgTransport = '${_imagePath}transport.png';
+  final String imgDriver = '${_imagePath}driver.png';
+  final String imgCars = '${_imagePath}cars.png';
+  final String imgBike = '${_imagePath}bike.png';
+  final String imgCycle = '${_imagePath}cycle.png';
+  final String imgTaxi = '${_imagePath}taxi.png';
+  final String imgSeat = '${_imagePath}seat.png';
+  final String imgDoor = '${_imagePath}door.png';
+  final String imgManual = '${_imagePath}manual.png';
+  final String imgAc = '${_imagePath}ac.png';
 }
 
 @riverpod

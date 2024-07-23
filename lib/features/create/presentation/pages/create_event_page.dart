@@ -11,6 +11,7 @@ import 'package:travel_dating_app/core/widgets/button_eleveted_widget.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/textfiels_and_title_widget.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/create_schedule_page.dart';
+import 'package:travel_dating_app/features/create/presentation/pages/trip_details_page.dart';
 import 'package:travel_dating_app/features/create/presentation/widgets/image_container.dart';
 
 class CreateEventPage extends HookConsumerWidget {
@@ -96,7 +97,9 @@ class CreateEventPage extends HookConsumerWidget {
                   const SizedBox32Widget(),
                   ElevatedButtonWidget(
                     text: constants.txtContinue,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.push(TripDetailsPage.routePath);
+                    },
                   ),
                 ],
               ),

@@ -16,7 +16,6 @@ class SettingsPage extends ConsumerWidget {
     ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
-    final typography = AppTheme.of(context).typography;
 
     ///constants
     final constants = ref.watch(settingsPageConstantsProvider);
@@ -36,7 +35,7 @@ class SettingsPage extends ConsumerWidget {
           ),
           child: Column(
             children: [
-              Row(
+              const Row(
                 children: [BackArrowButton()],
               ),
               Padding(

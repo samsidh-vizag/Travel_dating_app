@@ -11,6 +11,7 @@ class AppConstants {
   final String txtCamera = 'Camara';
   final String txtGallery = 'Gallery';
   final String txtDelete = 'Delete';
+  final String txtSelectDriver = 'Select Driver';
 }
 
 @riverpod
