@@ -18,10 +18,6 @@ class AddOnContainerWidget extends StatelessWidget {
     final typography = AppTheme.of(context).typography;
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
-    final spacess = AppTheme.of(context).spaces;
-
-    final spacesss = AppTheme.of(context).spaces;
-    final spacessss = AppTheme.of(context).spaces;
 
     return InkWell(
       onTap: onTap,
