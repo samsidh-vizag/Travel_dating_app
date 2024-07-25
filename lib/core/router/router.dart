@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:travel_dating_app/core/widgets/bottom_navigation_bar_widget.dart';
@@ -7,6 +8,7 @@ import 'package:travel_dating_app/features/account_creation/presentation/pages/c
 import 'package:travel_dating_app/features/account_creation/presentation/pages/select_interest_page.dart';
 import 'package:travel_dating_app/features/account_creation/presentation/pages/uploaad_photo_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/otp_verification_page.dart';
+import 'package:travel_dating_app/features/authentication/presentation/pages/sign_in_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/sign_up_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/signin_with_number_page.dart';
 import 'package:travel_dating_app/features/chat/presentation/pages/chat_page.dart';
@@ -41,8 +43,14 @@ final router =
     builder: (context, state) => const SignUpPage(),
   ),
   GoRoute(
+    path: SignInPage.routePath,
+    builder: (context, state) => const SignInPage(),
+  ),
+  GoRoute(
     path: OtpVerificationPage.routePath,
-    builder: (context, state) => const OtpVerificationPage(),
+    builder: (context, state) => OtpVerificationPage(
+      phone: state.extra as String,
+    ),
   ),
   GoRoute(
     path: CreateAccountPage.routePath,

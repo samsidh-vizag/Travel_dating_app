@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/create_trip_constants/transport_select_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/8px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/page_title_widget.dart';
-import 'package:travel_dating_app/features/create/presentation/widgets/features_container_widget.dart';
 import 'package:travel_dating_app/features/create/presentation/widgets/transport_items_gridview_widget.dart';
 
 class SelectTransportPage extends ConsumerWidget {
@@ -22,7 +20,6 @@ class SelectTransportPage extends ConsumerWidget {
 
     ///constants
     final constants = ref.watch(transportSelectPageConstantsProvider);
-    final asset = ref.watch(appAssetConstantsProvider);
 
     return Scaffold(
       body: SingleChildScrollView(

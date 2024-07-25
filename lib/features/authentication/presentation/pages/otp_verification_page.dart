@@ -12,28 +12,39 @@ import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/core/widgets/sub_heading_text-widget.dart';
 import 'package:travel_dating_app/features/account_creation/presentation/pages/create_account_page.dart';
+import 'package:travel_dating_app/features/authentication/presentation/provider/auth_provider.dart';
 import 'package:travel_dating_app/features/authentication/presentation/widgets/otp_textfield_widget.dart';
 import 'package:travel_dating_app/core/widgets/progressbar_container.dart';
 
 class OtpVerificationPage extends HookConsumerWidget {
   static const routePath = '/otpVerifiaction';
-  const OtpVerificationPage({super.key});
+  final String phone;
+  const OtpVerificationPage({super.key, required this.phone});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ///constatns
+    /// constants
     final constants = ref.watch(otpVerificationPageConstantsProvider);
 
-    ///theme
+    /// theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
     final typography = AppTheme.of(context).typography;
 
-    ///controller
+    /// controllers and focus nodes
     final firstOtp = useTextEditingController();
     final secondOtp = useTextEditingController();
     final thirdOtp = useTextEditingController();
-    final forthOtp = useTextEditingController();
+    final fourthOtp = useTextEditingController();
+    final fifthOtp = useTextEditingController();
+    final sixthOtp = useTextEditingController();
+
+    final firstFocus = useFocusNode();
+    final secondFocus = useFocusNode();
+    final thirdFocus = useFocusNode();
+    final fourthFocus = useFocusNode();
+    final fifthFocus = useFocusNode();
+    final sixthFocus = useFocusNode();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -59,7 +70,7 @@ class OtpVerificationPage extends HookConsumerWidget {
                 HeaddingTextWidget(text: constants.txtVerificationCode),
                 SubHeaddingTextWidget(text: constants.txtPleaseEnter),
                 Text(
-                  '+919001999991',
+                  phone,
                   style: typography.h600,
                 ),
                 const SizedBox16Widget(),
@@ -77,21 +88,38 @@ class OtpVerificationPage extends HookConsumerWidget {
                 ),
                 const SizedBox24Widget(),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
+                  padding: EdgeInsets.symmetric(horizontal: spaces.space_200),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       OtpTextFieldWidget(
                         controller: firstOtp,
+                        focusNode: firstFocus,
+                        nextFocusNode: secondFocus,
                       ),
                       OtpTextFieldWidget(
                         controller: secondOtp,
+                        focusNode: secondFocus,
+                        nextFocusNode: thirdFocus,
                       ),
                       OtpTextFieldWidget(
                         controller: thirdOtp,
+                        focusNode: thirdFocus,
+                        nextFocusNode: fourthFocus,
                       ),
                       OtpTextFieldWidget(
-                        controller: forthOtp,
+                        controller: fourthOtp,
+                        focusNode: fourthFocus,
+                        nextFocusNode: fifthFocus,
+                      ),
+                      OtpTextFieldWidget(
+                        controller: fifthOtp,
+                        focusNode: fifthFocus,
+                        nextFocusNode: sixthFocus,
+                      ),
+                      OtpTextFieldWidget(
+                        controller: sixthOtp,
+                        focusNode: sixthFocus,
                       ),
                     ],
                   ),
@@ -109,7 +137,21 @@ class OtpVerificationPage extends HookConsumerWidget {
                 ElevatedButtonWidget(
                   text: constants.txtVerify,
                   onPressed: () {
-                    context.push(CreateAccountPage.routePath);
+                    /// function to get concatenated OTP
+                    String getOtp() {
+                      return firstOtp.text +
+                          secondOtp.text +
+                          thirdOtp.text +
+                          fourthOtp.text +
+                          fifthOtp.text +
+                          sixthOtp.text;
+                    }
+
+                    final otp = getOtp();
+                    print(otp);
+                    ref
+                        .read(authenticationProvider(context).notifier)
+                        .verifyOtp(otp);
                   },
                 ),
               ],

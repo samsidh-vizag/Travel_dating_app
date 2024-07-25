@@ -12,7 +12,6 @@ import 'package:travel_dating_app/core/widgets/8px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/button_eleveted_widget.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/create_event_page.dart';
-import 'package:travel_dating_app/features/create/presentation/pages/create_trip_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/select_driver_page.dart';
 import 'package:travel_dating_app/features/create/presentation/pages/select_transport_page.dart';
 import 'package:travel_dating_app/features/create/presentation/widgets/add_on_container_widget.dart';

@@ -67,7 +67,7 @@ class VehicleOverviewPage extends ConsumerWidget {
                   ),
                 ),
               ),
-              SizedBox16Widget(),
+              const SizedBox16Widget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                 child: Text(
@@ -75,7 +75,7 @@ class VehicleOverviewPage extends ConsumerWidget {
                   style: typography.h700,
                 ),
               ),
-              SizedBox8Widget(),
+              const SizedBox8Widget(),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: spaces.space_300,
@@ -90,7 +90,7 @@ class VehicleOverviewPage extends ConsumerWidget {
                   ],
                 ),
               ),
-              SizedBox16Widget(),
+              const SizedBox16Widget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                 child: Row(
@@ -106,7 +106,7 @@ class VehicleOverviewPage extends ConsumerWidget {
                   ],
                 ),
               ),
-              SizedBox24Widget(),
+              const SizedBox24Widget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                 child: Text(
@@ -114,7 +114,7 @@ class VehicleOverviewPage extends ConsumerWidget {
                   style: typography.h700,
                 ),
               ),
-              SizedBox16Widget(),
+              const SizedBox16Widget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                 child: Container(
@@ -140,7 +140,7 @@ class VehicleOverviewPage extends ConsumerWidget {
                   ),
                 ),
               ),
-              SizedBox24Widget(),
+              const SizedBox24Widget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                 child: Row(

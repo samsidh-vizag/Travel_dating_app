@@ -17,11 +17,7 @@ abstract class AuthRepository {
   );
 
   /// signin using phone number
-  Future<(String, int?)> phoneNumberSignIn(
-    String number,
-  );
-
-  /// otp verification
+  Future<(String, int?)> loginWithPhone(String phone);
   Future<void> verifyOtp(String verificationId, String otp);
 
 //// google singin

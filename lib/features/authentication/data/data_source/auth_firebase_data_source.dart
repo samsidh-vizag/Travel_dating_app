@@ -17,12 +17,13 @@ abstract class AuthFirebaseDataSource {
   );
 
   /// signin using phone number
-  Future<(String, int?)> phoneNumberSignIn(
-    String number,
-  );
+  Future<(String, int?)> loginWithPhone(String phone);
 
-  /// otp verification
-  Future<void> verifyOtp(String verificationId, String otp);
+  ////verification otp
+  Future<void> verifyOtp(
+    String verificationId,
+    String otp,
+  );
 
 //// google singin
   Future<void> googleSignIn();

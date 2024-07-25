@@ -31,31 +31,25 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   ////signin using phone number
-  @override
-  Future<(String, int?)> phoneNumberSignIn(String number) {
-    // TODO: implement phoneNumberSignIn
-    throw UnimplementedError();
+  Future<(String, int?)> loginWithPhone(String phone) async {
+    return await dataSource.loginWithPhone(phone);
   }
 
-////otp verification
   @override
-  Future<void> verifyOtp(String verificationId, String otp) {
-    // TODO: implement verifyOtp
-    throw UnimplementedError();
+  Future<void> verifyOtp(String verificationId, String otp) async {
+    await dataSource.verifyOtp(verificationId, otp);
   }
 
   ///google signin
   @override
-  Future<void> googleSignIn() {
-    // TODO: implement googleSignIn
-    throw UnimplementedError();
+  Future<void> googleSignIn() async {
+    await dataSource.googleSignIn();
   }
 
   ///forgot password
   @override
-  Future<void> resetPassword(String email) {
-    // TODO: implement resetPassword
-    throw UnimplementedError();
+  Future<void> resetPassword(String email) async {
+    await dataSource.resetPassword(email);
   }
 
 ////signout

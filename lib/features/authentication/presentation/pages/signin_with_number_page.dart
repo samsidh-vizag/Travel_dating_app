@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -7,13 +8,15 @@ import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/constants/authenication_constants/signin_with_number_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
+import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/8px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/otp_verification_page.dart';
-import 'package:travel_dating_app/features/authentication/presentation/pages/sign_up_page.dart';
+import 'package:travel_dating_app/features/authentication/presentation/pages/sign_in_page.dart';
+import 'package:travel_dating_app/features/authentication/presentation/provider/auth_provider.dart';
 import 'package:travel_dating_app/features/authentication/presentation/widgets/image_button.dart';
 
 class SignInWithNumberPage extends HookConsumerWidget {
@@ -84,7 +87,10 @@ class SignInWithNumberPage extends HookConsumerWidget {
                   ElevatedButtonWidget(
                     text: appConstants.txtContinue,
                     onPressed: () {
-                      context.push(OtpVerificationPage.routePath);
+                      ref
+                          .read(authenticationProvider(context).notifier)
+                          .signInWithPhone(phoneNumberController.text);
+                      // context.push(OtpVerificationPage.routePath);
                     },
                   ),
                   const SizedBox8Widget(),
@@ -115,14 +121,18 @@ class SignInWithNumberPage extends HookConsumerWidget {
                       ),
                     ],
                   ),
+                  const SizedBox32Widget(),
                   Padding(
-                    padding: EdgeInsets.all(spaces.space_300),
+                    padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                     child: Row(
                       children: [
                         Expanded(
                           child: ImageButton(
-                            assetText: asset.icFacebook,
-                            buttonText: constants.txtFacebook,
+                            assetText: asset.icEmail,
+                            buttonText: constants.txtEmail,
+                            onTap: () {
+                              context.push(SignInPage.routePath);
+                            },
                           ),
                         ),
                         SizedBox(
@@ -132,33 +142,18 @@ class SignInWithNumberPage extends HookConsumerWidget {
                           child: ImageButton(
                             assetText: asset.icGoogle,
                             buttonText: constants.txtGoogle,
+                            onTap: () {
+                              ref
+                                  .read(
+                                      authenticationProvider(context).notifier)
+                                  .googleSignin();
+                            },
                           ),
                         )
                       ],
                     ),
                   ),
                   const SizedBox32Widget(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        constants.txtDontAccount,
-                        style: typography.h500,
-                      ),
-                      SizedBox(
-                        width: spaces.space_25,
-                      ),
-                      InkWell(
-                        onTap: () => context.push(SignUpPage.routePath),
-                        child: Text(
-                          constants.txtSignUp,
-                          style: typography.h600.copyWith(
-                            color: colors.primary,
-                          ),
-                        ),
-                      )
-                    ],
-                  )
                 ],
               ),
             ),

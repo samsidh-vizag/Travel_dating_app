@@ -8,6 +8,7 @@ import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
 import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
+import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/back_button.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
@@ -73,11 +74,8 @@ class CreateAccountPage extends HookConsumerWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const Row(
-                    children: [
-                      BackArrowButton(),
-                    ],
-                  ),
+                  SizedBox32Widget(),
+                  SizedBox16Widget(),
                   HeaddingTextWidget(text: constants.txtHeading),
                   SubHeaddingTextWidget(text: constants.txtSubHeading),
                   const SizedBox16Widget(),

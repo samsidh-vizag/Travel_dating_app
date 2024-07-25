@@ -16,7 +16,6 @@ class SelectDriverPage extends ConsumerWidget {
     ///theme
     final colors = AppTheme.of(context).colors;
     final spaces = AppTheme.of(context).spaces;
-    final typography = AppTheme.of(context).typography;
 
     ///constants
     final constants = ref.watch(appConstantsProvider);
@@ -35,17 +34,17 @@ class SelectDriverPage extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
+              const Row(
                 children: [
                   BackArrowButton(),
                 ],
               ),
-              SizedBox16Widget(),
+              const SizedBox16Widget(),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                 child: PageTitleWidget(title: constants.txtSelectDriver),
               ),
-              DriversGridViewWidget()
+              const DriversGridViewWidget()
             ],
           ),
         ),

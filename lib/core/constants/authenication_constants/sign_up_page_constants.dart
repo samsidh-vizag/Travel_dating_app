@@ -10,8 +10,13 @@ class SignUpPageConstants {
   final String txtOrSignUpwith = 'Or Sign Up With';
   final String txtFacebook = 'Facebook';
   final String txtGoogle = 'Google';
+  final String txtPhone = 'Phone      ';
+  final String txtTwitter = 'Twitter';
   final String txtAlreadyAccount = 'Already Have an Account?';
   final String txtSignIn = 'Sign In';
+  final String txtVerify = 'Verification';
+  final String txtOk = 'OK';
+  final String txtPleasGo = 'Please check your email and verify it, then LOGIN';
 }
 
 @riverpod

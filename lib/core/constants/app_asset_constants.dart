@@ -12,6 +12,9 @@ final class AppAssetConstants {
   final String icAddImage = '${_iconsPath}add_image_icon.svg';
   final String icAdd = '${_iconsPath}add_icon.svg';
   final String icSave = '${_iconsPath}save.svg';
+  final String icEmail = '${_iconsPath}email.svg';
+  final String icTwitter = '${_iconsPath}twitter.svg';
+  final String icPhone = '${_iconsPath}phone.svg';
 
   /// Prefix used for the app images
   static const _imagePath = 'assets/images/img_';

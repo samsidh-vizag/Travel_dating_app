@@ -109,11 +109,11 @@ class DriverOverviewPage extends HookConsumerWidget {
                     title: constants.txtDriverDetails,
                   ),
                 ),
-                SizedBox24Widget(),
+                const SizedBox24Widget(),
                 CircleAvatar(
                   radius: spaces.space_900,
                 ),
-                SizedBox8Widget(),
+                const SizedBox8Widget(),
                 Text(
                   "Name",
                   style: typography.h700,
@@ -124,7 +124,7 @@ class DriverOverviewPage extends HookConsumerWidget {
                     color: colors.textInverse,
                   ),
                 ),
-                SizedBox16Widget(),
+                const SizedBox16Widget(),
                 Row(
                   children: [
                     for (var i = 0; i < tabsToShow.length; i++)
@@ -140,11 +140,11 @@ class DriverOverviewPage extends HookConsumerWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
-                  child: Divider(),
+                  child: const Divider(),
                 ),
-                SizedBox16Widget(),
+                const SizedBox16Widget(),
                 getTabContent(),
-                SizedBox24Widget(),
+                const SizedBox24Widget(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: spaces.space_300),
                   child: Row(

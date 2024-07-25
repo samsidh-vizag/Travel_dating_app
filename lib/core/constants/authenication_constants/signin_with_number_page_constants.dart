@@ -7,6 +7,8 @@ class SigninWithNumberPageConstants {
   final String txtEnterPhone = 'Enter Your Number';
   final String txtFacebook = 'Facebook';
   final String txtGoogle = 'Google';
+  final String txtEmail = 'Email         ';
+  final String txtTWitter = 'Twitter';
   final String txtDontAccount = '''Dont't have an account''';
   final String txtSignUp = 'Sign Up';
   final String txtOrLoginWith = 'Or Login With';
