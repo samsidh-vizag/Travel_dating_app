@@ -70,7 +70,7 @@ class SignInPage extends HookConsumerWidget {
                   ElevatedButtonWidget(
                     text: appConstants.txtContinue,
                     onPressed: () {
-                      ref.read(authenticationProvider(context).notifier).signin(
+                      ref.read(authenticationProvider.notifier).signin(context,
                           emailController.text, passwordController.text);
                     },
                   ),
@@ -81,8 +81,8 @@ class SignInPage extends HookConsumerWidget {
                       TextButton(
                         onPressed: () {
                           ref
-                              .read(authenticationProvider(context).notifier)
-                              .reasetPasword(emailController.text);
+                              .read(authenticationProvider.notifier)
+                              .reasetPasword(context, emailController.text);
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +21,12 @@ import 'package:travel_dating_app/core/widgets/progressbar_container.dart';
 class OtpVerificationPage extends HookConsumerWidget {
   static const routePath = '/otpVerifiaction';
   final String phone;
-  const OtpVerificationPage({super.key, required this.phone});
+  final String verificationId;
+  const OtpVerificationPage({
+    super.key,
+    required this.phone,
+    required this.verificationId,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,12 +46,28 @@ class OtpVerificationPage extends HookConsumerWidget {
     final fifthOtp = useTextEditingController();
     final sixthOtp = useTextEditingController();
 
+    /// focus nodes
     final firstFocus = useFocusNode();
     final secondFocus = useFocusNode();
     final thirdFocus = useFocusNode();
     final fourthFocus = useFocusNode();
     final fifthFocus = useFocusNode();
     final sixthFocus = useFocusNode();
+
+    /// timer
+    final timerValue = useState(60);
+    final canResend = useState(false);
+    useEffect(() {
+      final timer = Timer.periodic(Duration(seconds: 1), (timer) {
+        if (timerValue.value == 0) {
+          canResend.value = true;
+          timer.cancel();
+        } else {
+          timerValue.value -= 1;
+        }
+      });
+      return timer.cancel;
+    }, []);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -129,10 +152,25 @@ class OtpVerificationPage extends HookConsumerWidget {
                   constants.txtDontReceive,
                   style: typography.h500,
                 ),
-                Text(
-                  constants.txtResendCode,
-                  style: typography.h600.copyWith(color: colors.primary),
-                ),
+                if (canResend.value)
+                  TextButton(
+                    onPressed: () {
+                      ref
+                          .read(authenticationProvider.notifier)
+                          .signInWithPhone(context, phone);
+                      timerValue.value = 60; // Reset timer
+                      canResend.value = false;
+                    },
+                    child: Text(
+                      constants.txtResendCode,
+                      style: typography.h600.copyWith(color: colors.primary),
+                    ),
+                  )
+                else
+                  Text(
+                    'Resend code in ${timerValue.value} seconds',
+                    style: typography.h500,
+                  ),
                 const SizedBox16Widget(),
                 ElevatedButtonWidget(
                   text: constants.txtVerify,
@@ -149,9 +187,13 @@ class OtpVerificationPage extends HookConsumerWidget {
 
                     final otp = getOtp();
                     print(otp);
+                    print(ref.watch(authenticationProvider).verificationId);
+                    print(phone);
+                    print(ref.watch(authenticationProvider).resendToken);
+
                     ref
-                        .read(authenticationProvider(context).notifier)
-                        .verifyOtp(otp);
+                        .read(authenticationProvider.notifier)
+                        .verifyOtp(context, verificationId, otp);
                   },
                 ),
               ],

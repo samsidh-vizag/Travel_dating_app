@@ -81,7 +81,7 @@ class SignUpPage extends HookConsumerWidget {
                   ElevatedButtonWidget(
                     text: appConstants.txtContinue,
                     onPressed: () {
-                      ref.read(authenticationProvider(context).notifier).signup(
+                      ref.read(authenticationProvider.notifier).signup(context,
                           emailController.text, passwordController.text);
                       showDialog(
                         context: context,
@@ -145,9 +145,10 @@ class SignUpPage extends HookConsumerWidget {
                             buttonText: constants.txtGoogle,
                             onTap: () {
                               ref
-                                  .read(
-                                      authenticationProvider(context).notifier)
-                                  .googleSignin();
+                                  .read(authenticationProvider.notifier)
+                                  .googleSignin(
+                                    context,
+                                  );
                             },
                           ),
                         )

@@ -22,12 +22,10 @@ import 'package:travel_dating_app/features/home/presentation/pages/home_page.dar
 
 part 'auth_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 class Authentication extends _$Authentication {
-  // late final AuthRepository repository;
-
   @override
-  AuthState build(BuildContext context) {
+  AuthState build() {
     return AuthState(verificationId: '', resendToken: null);
   }
 
@@ -35,12 +33,14 @@ class Authentication extends _$Authentication {
     try {
       await EmailVerificationUseCase(
           repository: ref.read(authRepositoryProvider))();
-    } on BaseException catch (e) {
-      Future.sync(() => AuthSnackbarUtils.showMessage(context, e.message));
-    }
+    } on BaseException catch (e) {}
   }
 
-  Future<void> signup(String email, String password) async {
+  Future<void> signup(
+    BuildContext context,
+    String email,
+    String password,
+  ) async {
     try {
       await SignupUsecase(repository: ref.read(authRepositoryProvider))(
           email, password);
@@ -55,7 +55,11 @@ class Authentication extends _$Authentication {
     }
   }
 
-  Future<void> signin(String email, String password) async {
+  Future<void> signin(
+    BuildContext context,
+    String email,
+    String password,
+  ) async {
     try {
       await SigninUseCase(repository: ref.read(authRepositoryProvider))(
           email, password);
@@ -71,17 +75,15 @@ class Authentication extends _$Authentication {
     }
   }
 
-  Future<void> signInWithPhone(String phone) async {
+  Future<void> signInWithPhone(BuildContext context, String phone) async {
     try {
       final verificationData = await LogInWithPhoneUseCase(
           repository: ref.read(authRepositoryProvider))(phone);
-      state = AuthState(
-          verificationId: verificationData.$1,
-          resendToken: verificationData.$2);
+
       Future.sync(
         () => context.push(
           OtpVerificationPage.routePath,
-          extra: phone,
+          extra: (phone, verificationData.$1),
         ),
       );
     } on BaseException catch (e) {
@@ -89,19 +91,20 @@ class Authentication extends _$Authentication {
     }
   }
 
-  Future<void> verifyOtp(String otp) async {
+  Future<void> verifyOtp(
+      BuildContext context, String verificationId, String otp) async {
     try {
       await VerifyOtpUsecase(repository: ref.read(authRepositoryProvider))(
-          state.verificationId, otp);
+          verificationId, otp);
       Future.sync(
-        () => context.push(CreateAccountPage.routePath),
+        () => context.go(CreateAccountPage.routePath),
       );
     } on BaseException catch (e) {
       Future.sync(() => AuthSnackbarUtils.showMessage(context, e.message));
     }
   }
 
-  Future<void> reasetPasword(String email) async {
+  Future<void> reasetPasword(BuildContext context, String email) async {
     try {
       await ResetPasswordUseCase(repository: ref.read(authRepositoryProvider))(
           email);
@@ -111,7 +114,7 @@ class Authentication extends _$Authentication {
     }
   }
 
-  Future<void> googleSignin() async {
+  Future<void> googleSignin(BuildContext context) async {
     try {
       await GoogleSignInUseCase(repository: ref.read(authRepositoryProvider))();
       Future.sync(() => context.go(CreateAccountPage.routePath));

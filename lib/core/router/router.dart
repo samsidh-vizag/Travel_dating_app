@@ -47,11 +47,14 @@ final router =
     builder: (context, state) => const SignInPage(),
   ),
   GoRoute(
-    path: OtpVerificationPage.routePath,
-    builder: (context, state) => OtpVerificationPage(
-      phone: state.extra as String,
-    ),
-  ),
+      path: OtpVerificationPage.routePath,
+      builder: (context, state) {
+        final (String, String) extra = state.extra as (String, String);
+        return OtpVerificationPage(
+          phone: extra.$1,
+          verificationId: extra.$2,
+        );
+      }),
   GoRoute(
     path: CreateAccountPage.routePath,
     builder: (context, state) => const CreateAccountPage(),

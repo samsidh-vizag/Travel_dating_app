@@ -82,10 +82,12 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
           try {
             await FirebaseAuth.instance.signInWithCredential(credential);
           } catch (e) {
+            print('Error during signInWithCredential: $e');
             throw BaseException('Failed to sign in with credential: $e');
           }
         },
         verificationFailed: (FirebaseAuthException e) {
+          print('Verification failed: ${e.message}');
           if (e.code == 'invalid-phone-number') {
             throw BaseException('The phone number entered is invalid.');
           } else {
@@ -94,11 +96,17 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
           }
         },
         codeSent: (String? verificationId, int? resendToken) async {
-          verificationIdCompleter.complete(verificationId);
-          resendTokenCompleter.complete(resendToken);
+          if (!verificationIdCompleter.isCompleted) {
+            verificationIdCompleter.complete(verificationId!);
+          }
+          if (!resendTokenCompleter.isCompleted) {
+            resendTokenCompleter.complete(resendToken);
+          }
         },
         codeAutoRetrievalTimeout: (String verificationId) {
-          verificationIdCompleter.complete(verificationId);
+          if (!verificationIdCompleter.isCompleted) {
+            verificationIdCompleter.complete(verificationId);
+          }
         },
       );
 
@@ -107,8 +115,10 @@ class AuthFirebaseDataSourceImpl implements AuthFirebaseDataSource {
 
       return (verificationId, newResendToken);
     } on FirebaseAuthException catch (e) {
+      print('FirebaseAuthException: ${e.message}');
       throw BaseException('Firebase authentication error: ${e.message}');
     } catch (e) {
+      print('Unknown error: $e');
       throw BaseException('Unknown error: $e');
     }
   }

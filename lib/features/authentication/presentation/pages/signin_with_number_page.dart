@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -8,13 +7,11 @@ import 'package:travel_dating_app/core/constants/app_asset_constants.dart';
 import 'package:travel_dating_app/core/constants/app_constants.dart';
 import 'package:travel_dating_app/core/constants/authenication_constants/signin_with_number_page_constants.dart';
 import 'package:travel_dating_app/core/theme/app_theme.dart';
-import 'package:travel_dating_app/core/widgets/16px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/24px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/32px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/8px_sizedbox.dart';
 import 'package:travel_dating_app/core/widgets/elevated_button_widget.dart';
 import 'package:travel_dating_app/core/widgets/headding_text_widget.dart';
-import 'package:travel_dating_app/features/authentication/presentation/pages/otp_verification_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/pages/sign_in_page.dart';
 import 'package:travel_dating_app/features/authentication/presentation/provider/auth_provider.dart';
 import 'package:travel_dating_app/features/authentication/presentation/widgets/image_button.dart';
@@ -88,8 +85,10 @@ class SignInWithNumberPage extends HookConsumerWidget {
                     text: appConstants.txtContinue,
                     onPressed: () {
                       ref
-                          .read(authenticationProvider(context).notifier)
-                          .signInWithPhone(phoneNumberController.text);
+                          .read(authenticationProvider.notifier)
+                          .signInWithPhone(context, phoneNumberController.text);
+                      print(ref.watch(authenticationProvider).verificationId);
+                      print(ref.watch(authenticationProvider).resendToken);
                       // context.push(OtpVerificationPage.routePath);
                     },
                   ),
@@ -144,9 +143,10 @@ class SignInWithNumberPage extends HookConsumerWidget {
                             buttonText: constants.txtGoogle,
                             onTap: () {
                               ref
-                                  .read(
-                                      authenticationProvider(context).notifier)
-                                  .googleSignin();
+                                  .read(authenticationProvider.notifier)
+                                  .googleSignin(
+                                    context,
+                                  );
                             },
                           ),
                         )
